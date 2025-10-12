@@ -7,8 +7,21 @@
       </div>
       <div class="card-content">
         <div class="content">
-          <h3 class="title is-4">{{ project.data.title | safe }}</h3>
-          <p>{{ project.data.description }}</p>
+          {% if project.data.tags %}
+          <div class="tags">
+            {% for tag in project.data.tags %}
+            <span class="tag">{{ tag }}</span>
+            {% endfor %}
+          </div>
+          {% endif %}
+          <h3 class="title is-4">{{ project.data.title | md | safe }}</h3>
+          {% if project.data['main-link-href'] %}
+          <a href="{{ project.data['main-link-href'] }}" class="button is-primary">
+            {{ project.data['main-link-label'] or 'View Project' }}
+          </a>
+          {% endif %}
+          {{ project.templateContent | safe }}
+          {% if project.data.links %}
           <ul>
             {% for link in project.data.links %} {% for label, url in link %}
             <li>
@@ -16,8 +29,16 @@
             </li>
             {% endfor %} {% endfor %}
           </ul>
+          {% endif %}
         </div>
       </div>
+      {% if project.data['footer-links'] %}
+      <footer class="card-footer">
+        {% for link in project.data['footer-links'] %} {% for label, url in link %}
+        <a href="{{ url }}" class="card-footer-item">{{ label }}</a>
+        {% endfor %} {% endfor %}
+      </footer>
+      {% endif %}
     </div>
   </div>
   {%- endfor -%}

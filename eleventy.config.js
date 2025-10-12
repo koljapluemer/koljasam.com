@@ -1,7 +1,9 @@
 import fs from "fs";
 import path from "path";
+import markdownIt from "markdown-it";
 
 export default function(eleventyConfig) {
+  const md = new markdownIt();
   eleventyConfig.addCollection("projects", c =>
     c.getFilteredByGlob("src/projects/*.md")
   );
@@ -19,6 +21,11 @@ export default function(eleventyConfig) {
 
   // expose as a Nunjucks global so includes and partials can access it
   eleventyConfig.addNunjucksGlobal("projectImage", projectImage);
+
+  // add markdown filter
+  eleventyConfig.addFilter("md", function(content) {
+    return md.renderInline(content);
+  });
 
   return {
     dir: { input: "src", output: "_site" },
