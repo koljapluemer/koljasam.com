@@ -3,15 +3,16 @@ layout: layouts/base.njk
 title: Home
 ---
 
-# Welcome
+# Kolja Sam Pluemer
 
-Some intro text, whatever content you want here.
+My mission is to make the world a better place by building excellent tools for learning.
 
-## Currently Working On
+## Primary Projects
 {% set projectCollection = collections.mainProjects %}
+{% set gridClass = "is-col-min-24" %}
 {% include "partials/project-list.njk" %}
 
-## My Tools
+## Currently Working On
 {% set projectCollection = collections.activeProjects %}
 {% include "partials/project-list.njk" %}
 
