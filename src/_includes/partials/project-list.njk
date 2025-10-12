@@ -1,18 +1,24 @@
 <div class="columns">
   {%- for project in collections.projects -%}
   <div class="column">
-    {{ projectImage(project.fileSlug) | safe }}
-    <h3>{{ project.data.title | safe }}</h3>
-    <p>
-      {{ project.data.description }}
-    </p>
-    <ul>
-      {% for link in project.data.links %} {% for label, url in link %}
-      <li>
-        <a href="{{ url }}">{{ label }}</a>
-      </li>
-      {% endfor %} {% endfor %}
-    </ul>
+    <div class="card">
+      <div class="card-image">
+        {{ projectImage(project.fileSlug) | safe }}
+      </div>
+      <div class="card-content">
+        <div class="content">
+          <h3 class="title is-4">{{ project.data.title | safe }}</h3>
+          <p>{{ project.data.description }}</p>
+          <ul>
+            {% for link in project.data.links %} {% for label, url in link %}
+            <li>
+              <a href="{{ url }}">{{ label }}</a>
+            </li>
+            {% endfor %} {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
   </div>
   {%- endfor -%}
 </div>
