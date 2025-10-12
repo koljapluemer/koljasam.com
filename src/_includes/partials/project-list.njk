@@ -1,0 +1,9 @@
+{%- for project in collections.projects -%}
+  <article>
+    {{ projectImage(project.fileSlug) | safe }}
+    <h3>{{ project.data.title | safe }}</h3>
+    <p>
+    {{ project.data.description }}
+    </p>
+  </article>
+{%- endfor -%}

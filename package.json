@@ -1,0 +1,25 @@
+{
+  "name": "koljasam.com",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "npx eleventy --serve",
+    "build": "npx eleventy"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/koljapluemer/koljasam.com.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/koljapluemer/koljasam.com/issues"
+  },
+  "homepage": "https://github.com/koljapluemer/koljasam.com#readme",
+  "dependencies": {
+    "@11ty/eleventy": "^3.1.2"
+  }
+}
