@@ -8,6 +8,18 @@ export default function(eleventyConfig) {
     c.getFilteredByGlob("src/projects/*.md")
   );
 
+  eleventyConfig.addCollection("mainProjects", c =>
+    c.getFilteredByGlob("src/projects/*.md").filter(item => item.data.type === "main")
+  );
+
+  eleventyConfig.addCollection("activeProjects", c =>
+    c.getFilteredByGlob("src/projects/*.md").filter(item => item.data.type === "active")
+  );
+
+  eleventyConfig.addCollection("pastProjects", c =>
+    c.getFilteredByGlob("src/projects/*.md").filter(item => !item.data.type || (item.data.type !== "main" && item.data.type !== "active"))
+  );
+
   eleventyConfig.addPassthroughCopy({ "static": "." });
 
   const projectImage = projectName => {

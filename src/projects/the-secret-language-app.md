@@ -1,7 +1,7 @@
 ---
 layout: layouts/base.njk
 title: The ~~Secret~~ Language App
-date: 2025-10-12
+type: main
 tags:
   - demo
   - simplecss
