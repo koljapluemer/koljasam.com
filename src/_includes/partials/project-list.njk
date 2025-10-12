@@ -1,11 +1,11 @@
 <div class="columns">
   {%- for project in collections.projects -%}
   <div class="column">
-    <div class="card">
-      <div class="card-image">
+    <div class="card" style="height: 100%; display: flex; flex-direction: column;">
+      <div class="card-image" style="display: flex; justify-content: center; align-items: center; min-height: 300px;">
         {{ projectImage(project.fileSlug) | safe }}
       </div>
-      <div class="card-content">
+      <div class="card-content" style="flex: 1;">
         <div class="content">
           {% if project.data.tags %}
           <div class="tags">

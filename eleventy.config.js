@@ -11,9 +11,9 @@ export default function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "static": "." });
 
   const projectImage = projectName => {
-    const filePath = path.join("static", "img", "projects", `${projectName}.png`);
+    const filePath = path.join("static", "img", "projects", `${projectName}.webp`);
     return fs.existsSync(filePath)
-      ? `<img src="/img/projects/${projectName}.png" alt="${projectName}">`
+      ? `<img src="/img/projects/${projectName}.webp" alt="${projectName}" style="max-height: 300px; width: auto; object-fit: contain;">`
       : "";
   };
 
