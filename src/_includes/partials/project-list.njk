@@ -1,9 +1,18 @@
-{%- for project in collections.projects -%}
-  <article>
+<div class="columns">
+  {%- for project in collections.projects -%}
+  <div class="column">
     {{ projectImage(project.fileSlug) | safe }}
     <h3>{{ project.data.title | safe }}</h3>
     <p>
-    {{ project.data.description }}
+      {{ project.data.description }}
     </p>
-  </article>
-{%- endfor -%}
+    <ul>
+      {% for link in project.data.links %} {% for label, url in link %}
+      <li>
+        <a href="{{ url }}">{{ label }}</a>
+      </li>
+      {% endfor %} {% endfor %}
+    </ul>
+  </div>
+  {%- endfor -%}
+</div>
