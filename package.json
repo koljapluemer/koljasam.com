@@ -5,8 +5,10 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "dev": "npx eleventy --serve",
-    "build": "npx eleventy"
+    "dev": "concurrently \"npm:dev:css\" \"npx eleventy --serve\"",
+    "dev:css": "tailwindcss -i ./src/styles/tailwind.css -o ./static/css/site.css --watch",
+    "build": "npm run build:css && npx eleventy",
+    "build:css": "tailwindcss -i ./src/styles/tailwind.css -o ./static/css/site.css --minify"
   },
   "repository": {
     "type": "git",
@@ -20,6 +22,13 @@
   },
   "homepage": "https://github.com/koljapluemer/koljasam.com#readme",
   "dependencies": {
-    "@11ty/eleventy": "^3.1.2"
+    "@11ty/eleventy": "^3.1.2",
+    "flowbite": "^2.5.1"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.20",
+    "concurrently": "^8.2.2",
+    "postcss": "^8.4.47",
+    "tailwindcss": "^3.4.13"
   }
 }

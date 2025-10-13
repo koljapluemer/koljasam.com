@@ -3,19 +3,31 @@ layout: layouts/base.njk
 title: Home
 ---
 
-# Kolja Sam Pluemer
+<section class="space-y-16">
+  <header class="space-y-4">
+    <h1 class="text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl">
+      Kolja Sam Pluemer
+    </h1>
+    <p class="max-w-2xl text-lg text-slate-600">
+      My mission is to make the world a better place by building excellent tools for learning.
+    </p>
+  </header>
 
-My mission is to make the world a better place by building excellent tools for learning.
+  <section class="space-y-6">
+    <h2 class="text-2xl font-semibold text-slate-900">Primary Projects</h2>
+    {% set projectCollection = collections.mainProjects %}
+    {% include "partials/project-list.njk" %}
+  </section>
 
-## Primary Projects
-{% set projectCollection = collections.mainProjects %}
-{% set gridClass = "is-col-min-24" %}
-{% include "partials/project-list.njk" %}
+  <section class="space-y-6">
+    <h2 class="text-2xl font-semibold text-slate-900">Currently Working On</h2>
+    {% set projectCollection = collections.activeProjects %}
+    {% include "partials/project-list.njk" %}
+  </section>
 
-## Currently Working On
-{% set projectCollection = collections.activeProjects %}
-{% include "partials/project-list.njk" %}
-
-## Past Experiments
-{% set projectCollection = collections.pastProjects %}
-{% include "partials/project-list.njk" %}
+  <section class="space-y-6">
+    <h2 class="text-2xl font-semibold text-slate-900">Past Experiments</h2>
+    {% set projectCollection = collections.pastProjects %}
+    {% include "partials/project-list.njk" %}
+  </section>
+</section>

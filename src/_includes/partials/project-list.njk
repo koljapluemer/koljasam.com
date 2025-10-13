@@ -1,49 +1,61 @@
-<div class="grid {{ gridClass or 'is-col-min-20' }}">
+<div class="grid gap-8 sm:grid-cols-2 xl:grid-cols-3 {{ gridClass or '' }}">
   {%- for project in projectCollection -%}
-  <div class="cell">
-    <div class="card" style="height: 100%; display: flex; flex-direction: column;">
-      <div class="card-image" style="display: flex; justify-content: center; align-items: center; min-height: 300px;">
-        {{ projectImage(project.fileSlug) | safe }}
+  <article class="flex h-full flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition hover:shadow-lg focus-within:shadow-lg">
+    <div class="flex items-center justify-center bg-slate-100 px-6 py-10">
+      {{ projectImage(project.fileSlug) | safe }}
+    </div>
+    <div class="flex flex-1 flex-col gap-4 p-6">
+      {% if project.data.tags %}
+      <div class="flex flex-wrap gap-2">
+        {% for tag in project.data.tags %}
+        <span class="inline-flex items-center rounded-full bg-slate-200 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-slate-700">
+          {{ tag }}
+        </span>
+        {% endfor %}
       </div>
-      <div class="card-content" style="flex: 1;">
-        <div class="content">
-          {% if project.data.tags %}
-          <div class="tags">
-            {% for tag in project.data.tags %}
-            <span class="tag">{{ tag }}</span>
-            {% endfor %}
-          </div>
-          {% endif %}
-          <h3 class="title is-4">{{ project.data.title | md | safe }}</h3>
-          {% if project.data['main-link-href'] %}
-          <a href="{{ project.data['main-link-href'] }}" class="button is-primary">
-            {{ project.data['main-link-label'] or 'View Project' }}
-          </a>
-          {% endif %}
-          {{ project.templateContent | safe }}
-          {% if project.data.links %}
-          <ul>
-            {% for link in project.data.links %}
-            {% if link.url and link.label %}
-            <li>
-              <a href="{{ link.url }}">{{ link.label }}</a>
-            </li>
-            {% endif %}
-            {% endfor %}
-          </ul>
-          {% endif %}
-        </div>
+      {% endif %}
+      <h3 class="text-xl font-semibold text-slate-900">
+        {{ project.data.title | md | safe }}
+      </h3>
+      {{ project.templateContent | safe }}
+      {% if project.data['main-link-href'] %}
+      <div class="mt-auto">
+        <a
+          href="{{ project.data['main-link-href'] }}"
+          class="inline-flex items-center justify-center rounded-lg bg-slate-900 px-4 py-2 text-sm font-semibold text-white ring-offset-2 transition hover:bg-slate-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-400"
+        >
+          {{ project.data['main-link-label'] or 'View Project' }}
+        </a>
       </div>
-      {% if project.data['footer-links'] %}
-      <footer class="card-footer">
-        {% for link in project.data['footer-links'] %}
+      {% endif %}
+      {% if project.data.links %}
+      <ul class="space-y-2 text-sm font-medium text-slate-700">
+        {% for link in project.data.links %}
         {% if link.url and link.label %}
-        <a href="{{ link.url }}" class="card-footer-item">{{ link.label }}</a>
+        <li>
+          <a href="{{ link.url }}" class="inline-flex items-center gap-2 text-slate-700 hover:text-slate-900">
+            <span>{{ link.label }}</span>
+            <svg class="h-4 w-4" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
+          </a>
+        </li>
         {% endif %}
         {% endfor %}
-      </footer>
+      </ul>
       {% endif %}
     </div>
-  </div>
+    {% if project.data['footer-links'] %}
+    <footer class="flex divide-x divide-slate-200 border-t border-slate-200 bg-slate-50 text-sm font-semibold text-slate-700">
+      {% for link in project.data['footer-links'] %}
+      {% if link.url and link.label %}
+      <a href="{{ link.url }}" class="flex-1 px-4 py-3 text-center transition hover:bg-slate-100 hover:text-slate-900">
+        {{ link.label }}
+      </a>
+      {% endif %}
+      {% endfor %}
+    </footer>
+    {% endif %}
+  </article>
   {%- endfor -%}
 </div>

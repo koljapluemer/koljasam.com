@@ -21,11 +21,14 @@ export default function(eleventyConfig) {
   );
 
   eleventyConfig.addPassthroughCopy({ "static": "." });
+  eleventyConfig.addPassthroughCopy({
+    "node_modules/flowbite/dist/flowbite.min.js": "js/flowbite.min.js"
+  });
 
   const projectImage = projectName => {
     const filePath = path.join("static", "img", "projects", `${projectName}.webp`);
     return fs.existsSync(filePath)
-      ? `<img src="/img/projects/${projectName}.webp" alt="${projectName}" style="max-height: 300px; width: auto; object-fit: contain;">`
+      ? `<img src="/img/projects/${projectName}.webp" alt="${projectName}" class="h-48 w-auto max-w-full object-contain">`
       : "";
   };
 
