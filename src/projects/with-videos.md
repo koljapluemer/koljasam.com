@@ -1,9 +1,6 @@
 ---
 layout: layouts/base.njk
 title: With Videos
-tags:
-  - demo
-  - simplecss
 ---
 
-Lorem ipsum
+A language learning app teaching you the vocabulary needed to understand a specific video.

@@ -14,7 +14,5 @@ footer-links:
   - backend: https://github.com/koljapluemer/secret-language-app-sets
 ---
 
-This is **the content** of the sample project.
-
-You can write details, images, etc.
-
+My playground for language learning. 
+Trying to digitialize all the study methods, built on an abstracted models of units of meaning.

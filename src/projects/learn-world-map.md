@@ -1,9 +1,6 @@
 ---
 layout: layouts/base.njk
 title: Learn World Map
-tags:
-  - demo
-  - simplecss
 ---
 
-Lorem ipsum
+A game to learn all the countries on the world map.
