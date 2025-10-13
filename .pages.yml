@@ -31,9 +31,10 @@ content:
         label: Status
         type: select
         options:
-          - main
-          - active
-          - past
+          values:
+            - main
+            - active
+            - past
       - name: tags
         label: Tags
         type: string
