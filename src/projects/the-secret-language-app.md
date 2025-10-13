@@ -8,10 +8,13 @@ tags:
 main-link-href: https://secret-language-app.netlify.app
 main-link-label: Live Project
 links:
-  - "Follow the Development Journey on X": https://x.com/kolja_sam
+  - label: Follow the Development Journey on X
+    url: https://x.com/kolja_sam
 footer-links:
-  - github: https://github.com/koljapluemer/secret-language-app
-  - backend: https://github.com/koljapluemer/secret-language-app-sets
+  - label: GitHub
+    url: https://github.com/koljapluemer/secret-language-app
+  - label: Backend
+    url: https://github.com/koljapluemer/secret-language-app-sets
 ---
 
 My playground for language learning. 

@@ -23,20 +23,24 @@
           {{ project.templateContent | safe }}
           {% if project.data.links %}
           <ul>
-            {% for link in project.data.links %} {% for label, url in link %}
+            {% for link in project.data.links %}
+            {% if link.url and link.label %}
             <li>
-              <a href="{{ url }}">{{ label }}</a>
+              <a href="{{ link.url }}">{{ link.label }}</a>
             </li>
-            {% endfor %} {% endfor %}
+            {% endif %}
+            {% endfor %}
           </ul>
           {% endif %}
         </div>
       </div>
       {% if project.data['footer-links'] %}
       <footer class="card-footer">
-        {% for link in project.data['footer-links'] %} {% for label, url in link %}
-        <a href="{{ url }}" class="card-footer-item">{{ label }}</a>
-        {% endfor %} {% endfor %}
+        {% for link in project.data['footer-links'] %}
+        {% if link.url and link.label %}
+        <a href="{{ link.url }}" class="card-footer-item">{{ link.label }}</a>
+        {% endif %}
+        {% endfor %}
       </footer>
       {% endif %}
     </div>

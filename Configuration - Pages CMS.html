@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="en" x-data="{
+    darkMode: localStorage.getItem('dark') ? localStorage.getItem('dark') === 'true' : window.matchMedia('(prefers-color-scheme: dark)').matches
+  }" x-init="$watch('darkMode', val =&gt; localStorage.setItem('dark', val))" x-bind:class="{ 'dark': darkMode }" class="dark"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta charset="UTF-8">
+  <title>Configuration - Pages CMS</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="The No-Hassle CMS for Static Sites">
+  <link rel="stylesheet" type="text/css" href="Configuration%20-%20Pages%20CMS_files/styles.css">
+  <link rel="icon" type="image/x-icon" href="https://pagescms.org/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://pagescms.org/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://pagescms.org/favicon-16x16.png">
+  <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="https://pagescms.org/apple-touch-icon.png">
+  <link rel="icon" type="image/svg+xml" href="https://pagescms.org/favicon.svg">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Configuration - Pages CMS">
+  <meta property="og:description" content="The No-Hassle CMS for Static Sites">
+  <meta property="og:url" content="https://pagescms.org/docs/configuration/">
+  <meta property="og:image" content="https://pagescms.org/cover@2x.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@pagescms">
+  <meta name="twitter:url" content="https://pagescms.org/docs/configuration/">
+  <meta name="twitter:title" content="Configuration - Pages CMS">
+  <meta name="twitter:description" content="The No-Hassle CMS for Static Sites">
+  <meta name="twitter:image" content="https://pagescms.org/cover@2x.png">
+  <script src="Configuration%20-%20Pages%20CMS_files/alpine.js" defer="defer"></script>
+  <link href="Configuration%20-%20Pages%20CMS_files/css2.css" rel="stylesheet">
+</head>
+<body class="bg-background antialiased font-inter">
+  <header class="border-b flex items-center gap-x-4 py-2 px-4 lg:py-3 lg:px-6 mx-auto sticky top-0 w-full bg-background z-50">
+  <a class="inline-flex items-center" href="https://pagescms.org/">
+    <svg class="max-sm:h-4 max-sm:w-4 h-5 w-5" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0 4.8C0 2.14903 2.14903 0 4.8 0H12.0118C13.2848 0 14.5057 0.505713 15.4059 1.40589L22.5941 8.59411C23.4943 9.49429 24 10.7152 24 11.9882V19.2C24 21.851 21.851 24 19.2 24H4.8C2.14903 24 0 21.851 0 19.2V4.8Z"></path>
+    </svg>
+    <span class="hidden sm:inline-block ml-2 text-sm font-semibold">Pages CMS</span>
+  </a>
+  <a class="ml-auto text-sm font-medium text-muted-foreground hover:text-primary " href="https://pagescms.org/">
+    About
+  </a>
+  <a class="text-sm font-medium text-muted-foreground hover:text-primary !text-primary" href="https://pagescms.org/docs">
+    Docs
+  </a>
+  <a class="flex gap-x-1 items-center text-sm font-medium text-muted-foreground hover:text-primary" href="https://github.com/pages-cms/pages-cms" target="_blank">
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-3 w-3"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
+  </a>
+  <a class="flex gap-x-1 items-center text-sm font-medium text-muted-foreground hover:text-primary" href="https://pagescms.org/chat" target="_blank">
+    Discord
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-3 w-3"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
+  </a>
+  <a class="button-outline !h-8" href="https://app.pagescms.org/">
+    Sign in
+  </a>
+</header>
+
+  <div class="flex max-md:flex-col max-w-7xl mx-auto px-4 my-8 lg:px-8 lg:my-12 gap-x-8">
+  <div class="md:w-80 max-md:mb-4">
+    <div class="navigation md:pr-8 md:border-r" x-data="{ showNav: false }">
+      <button @click="showNav = !showNav" class="button-outline flex items-center gap-x-2 w-full md:hidden mb-2">
+        <span x-text="showNav ? 'Hide navigation' : 'Show navigation'">Show navigation</span>
+        <template x-if="!showNav"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-auto h-4 w-4"><path d="m7 15 5 5 5-5"></path><path d="m7 9 5-5 5 5"></path></svg></template><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-auto h-4 w-4"><path d="m7 15 5 5 5-5"></path><path d="m7 9 5-5 5 5"></path></svg>
+        <template x-if="showNav"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-auto h-4 w-4"><path d="m7 20 5-5 5 5"></path><path d="m7 4 5 5 5-5"></path></svg></template>
+      </button>
+      <div class="max-md:max-h-0 overflow-hidden duration-200 transition-all" :style="showNav ? 'max-height: ' + $refs.navigation.offsetHeight + 'px' : ''" style="">
+        <div x-ref="navigation" class="max-md:border max-md:rounded-md max-md:p-4 max-md:text-sm">
+          
+
+
+  <ul class="flex flex-col gap-y-4">
+    
+      <li x-data="{ open: true }">
+        <div class="flex gap-x-2 items-center">
+          <a href="https://pagescms.org/docs/" class="flex items-center rounded-lg font-mdedium text-sm text-muted-foreground hover:text-primary outline-none">
+            Getting started
+          </a>
+          
+        </div>
+        
+      </li>
+    
+      <li x-data="{ open: true }">
+        <div class="flex gap-x-2 items-center">
+          <a href="https://pagescms.org/docs/configuration/" class="flex items-center rounded-lg font-mdedium text-sm text-muted-foreground hover:text-primary outline-none text-primary font-medium">
+            Configuration
+          </a>
+          
+            <button class="ml-auto text-muted-foreground hover:text-inherit transition-all duration-200 rotate-90" @click="open = !open" :class="open ? 'rotate-90' : ''">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 shrink-0"><path d="m9 18 6-6-6-6"></path></svg>
+            </button>
+          
+        </div>
+                    
+          <div class="max-h-0 overflow-hidden duration-200 transition-all" :style="open ? 'max-height: ' + $el.scrollHeight + 'px' : ''" style="max-height: 504px">
+            
+              
+  <ul class="flex flex-col gap-y-4">
+    
+      <li x-data="{ open: false }">
+        <div class="flex gap-x-2 items-center">
+          <a href="https://pagescms.org/docs/configuration/block-field/" class="flex items-center rounded-lg font-mdedium text-sm text-muted-foreground hover:text-primary outline-none">
+            Block field
+          </a>
+          
+        </div>
+        
+      </li>
+    
+      <li x-data="{ open: false }">
+        <div class="flex gap-x-2 items-center">
+          <a href="https://pagescms.org/docs/configuration/boolean-field/" class="flex items-center rounded-lg font-mdedium text-sm text-muted-foreground hover:text-primary outline-none">
+            Boolean field
+          </a>
+          
+        </div>
+        
+      </li>
+    
+      <li x-data="{ open: false }">
+        <div class="flex gap-x-2 items-center">
+          <a href="https://pagescms.org/docs/configuration/code-field/" class="flex items-center rounded-lg font-mdedium text-sm text-muted-foreground hover:text-primary outline-none">
+            Code field
+          </a>
+          
+        </div>
+        
+      </li>
+    
+      <li x-data="{ open: false }">
+        <div class="flex gap-x-2 items-center">
+          <a href="https://pagescms.org/docs/configuration/date-field/" class="flex items-center rounded-lg font-mdedium text-sm text-muted-foreground hover:text-primary outline-none">
+            Date field
+          </a>
+          
+        </div>
+        
+      </li>
+    
+      <li x-data="{ open: false }">
+        <div class="flex gap-x-2 items-center">
+          <a href="https://pagescms.org/docs/configuration/file-field/" class="flex items-center rounded-lg font-mdedium text-sm text-muted-foreground hover:text-primary outline-none">
+            File field
+          </a>
+          
+        </div>
+        
+      </li>
+    
+      <li x-data="{ open: false }">
+        <div class="flex gap-x-2 items-center">
+          <a href="https://pagescms.org/docs/configuration/image-field/" class="flex items-center rounded-lg font-mdedium text-sm text-muted-foreground hover:text-primary outline-none">
+            Image field
+          </a>
+          
+        </div>
+        
+      </li>
+    
+      <li x-data="{ open: false }">
+        <div class="flex gap-x-2 items-center">
+          <a href="https://pagescms.org/docs/configuration/number-field/" class="flex items-center rounded-lg font-mdedium text-sm text-muted-foreground hover:text-primary outline-none">
+            Number field
+          </a>
+          
+        </div>
+        
+      </li>
+    
+      <li x-data="{ open: false }">
+        <div class="flex gap-x-2 items-center">
+          <a href="https://pagescms.org/docs/configuration/object-field/" class="flex items-center rounded-lg font-mdedium text-sm text-muted-foreground hover:text-primary outline-none">
+            Object field
+          </a>
+          
+        </div>
+        
+      </li>
+    
+      <li x-data="{ open: false }">
+        <div class="flex gap-x-2 items-center">
+          <a href="https://pagescms.org/docs/configuration/reference-field/" class="flex items-center rounded-lg font-mdedium text-sm text-muted-foreground hover:text-primary outline-none">
+            Reference field
+          </a>
+          
+        </div>
+        
+      </li>
+    
+      <li x-data="{ open: false }">
+        <div class="flex gap-x-2 items-center">
+          <a href="https://pagescms.org/docs/configuration/rich-text-field/" class="flex items-center rounded-lg font-mdedium text-sm text-muted-foreground hover:text-primary outline-none">
+            Rich-text field
+          </a>
+          
+        </div>
+        
+      </li>
+    
+      <li x-data="{ open: false }">
+        <div class="flex gap-x-2 items-center">
+          <a href="https://pagescms.org/docs/configuration/select-field/" class="flex items-center rounded-lg font-mdedium text-sm text-muted-foreground hover:text-primary outline-none">
+            Select field
+          </a>
+          
+        </div>
+        
+      </li>
+    
+      <li x-data="{ open: false }">
+        <div class="flex gap-x-2 items-center">
+          <a href="https://pagescms.org/docs/configuration/string-field/" class="flex items-center rounded-lg font-mdedium text-sm text-muted-foreground hover:text-primary outline-none">
+            String field
+          </a>
+          
+        </div>
+        
+      </li>
+    
+      <li x-data="{ open: false }">
+        <div class="flex gap-x-2 items-center">
+          <a href="https://pagescms.org/docs/configuration/text-field/" class="flex items-center rounded-lg font-mdedium text-sm text-muted-foreground hover:text-primary outline-none">
+            Text field
+          </a>
+          
+        </div>
+        
+      </li>
+    
+      <li x-data="{ open: false }">
+        <div class="flex gap-x-2 items-center">
+          <a href="https://pagescms.org/docs/configuration/uuid-field/" class="flex items-center rounded-lg font-mdedium text-sm text-muted-foreground hover:text-primary outline-none">
+            UUID field
+          </a>
+          
+        </div>
+        
+      </li>
+    
+  </ul>
+
+            
+          </div>
+        
+      </li>
+    
+      <li x-data="{ open: false }">
+        <div class="flex gap-x-2 items-center">
+          <a href="https://pagescms.org/docs/examples/" class="flex items-center rounded-lg font-mdedium text-sm text-muted-foreground hover:text-primary outline-none">
+            Examples
+          </a>
+          
+        </div>
+        
+      </li>
+    
+      <li x-data="{ open: false }">
+        <div class="flex gap-x-2 items-center">
+          <a href="https://pagescms.org/docs/custom-fields/" class="flex items-center rounded-lg font-mdedium text-sm text-muted-foreground hover:text-primary outline-none">
+            Custom fields
+          </a>
+          
+        </div>
+        
+      </li>
+    
+  </ul>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="w-full">
+    <div class="prose">
+      <h1 class="!mb-8">Configuration</h1>
+      <h2 id="the-.pages.yml-file">The .pages.yml file</h2>
+<p><img src="Configuration%20-%20Pages%20CMS_files/nextjs-settings-light@2x.png" alt="Media"></p>
+<p>To configure Pages CMS you just need to add a <code>.pages.yml</code>
+ file to the repository (and branch) that hosts your content and media. 
+If this file isn't there when you open your repository/branch in Pages 
+CMS, you will be presented with a link to add one via the Pages CMS 
+interface.</p>
+<p>You can have different configuration files on separate branches. The 
+Pages CMS interface allows you to navigate between them (click on the 
+name of repository at the top of the sidebar and then select the branch 
+in the dropdown menu).</p>
+<p>The <code>.pages.yml</code> file contains mainly 3 sections:</p>
+<ul>
+<li><strong>media</strong>: the settings for media (images, videos, etc). <a href="#media">See the "Media" section below</a>.</li>
+<li><strong>content</strong>: an array defining the content types. <a href="#content">See the "Content" section below</a>.</li>
+<li><strong>components</strong>: an object defining reusable groups of fields. <a href="#components">See the "Components" section below</a>.</li>
+</ul>
+<p class="aspect-video">
+<iframe class="h-full w-full rounded-lg" src="https://youtube.com/embed/KtoapCOT1j4" width="100%" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+</p>
+<h2 id="media">Media</h2>
+<p>With media, you can configure how to handle files you want to upload, attach to or embed in your content. <code>media</code>
+ can be a string, a single object or an array of objects depending on 
+whether you want a single or multiple media folders and configurations.</p>
+<p><img src="Configuration%20-%20Pages%20CMS_files/nextjs-media-light@2x.png" alt="Media"></p>
+<h3 id="keys">Keys</h3>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><code>name</code></strong></td>
+<td><code>string</code></td>
+<td><strong>Required if media is an array. Must be unique across the media array</strong>. Machine name for the media entry.</td>
+</tr>
+<tr>
+<td><strong><code>label</code></strong></td>
+<td><code>string</code></td>
+<td>Display name for the media. This will be displayed in the main menu.</td>
+</tr>
+<tr>
+<td><strong><code>input</code></strong></td>
+<td><code>string</code></td>
+<td>The path to the media folder relative to the root of the repo (e.g. <code>src/files/media</code>). This path is what allows us to find the files in Pages CMS to manage content and media.</td>
+</tr>
+<tr>
+<td><strong><code>output</code></strong></td>
+<td><code>string</code></td>
+<td>The path to the media folder relative to the root of the website (e.g. <code>files/media</code>). This path will prefix all media saved in our content, which will be used by your static site generator.</td>
+</tr>
+<tr>
+<td><strong><code>path</code></strong></td>
+<td><code>string</code></td>
+<td>The default path to present the user (e.g. when opening the media browser on an <a href="https://pagescms.org/docs/configuration/image-field">Image Field</a>).</td>
+</tr>
+<tr>
+<td><strong><code>extensions</code></strong></td>
+<td><code>array</code></td>
+<td>An array of file extensions (strings) that should be displayed (e.g., <code>[png, jpg]</code>). If provided, any file with an extension not included in this list will not be shown to the user.</td>
+</tr>
+<tr>
+<td><strong><code>categories</code></strong></td>
+<td><code>array</code></td>
+<td>An array of category names (strings) to allow specific file types: <code>image</code> (<code>jpg</code>, <code>jpeg</code>, <code>png</code>, <code>gif</code>, <code>svg</code>, <code>bmp</code>, <code>tif</code>, <code>tiff</code>), <code>document</code> (<code>pdf</code>, <code>doc</code>, <code>docx</code>, <code>ppt</code>, <code>pptx</code>, <code>vxls</code>, <code>xlsx</code>, <code>txt</code>, <code>rtf</code>), <code>video</code> (<code>mp4</code>, <code>avi</code>, <code>mov</code>, <code>wmv</code>, <code>flv</code>), <code>audio</code> (<code>mp3</code>, <code>wav</code>, <code>aac</code>, <code>ogg</code>, <code>flac</code>) and <code>compressed</code> (<code>zip</code>, <code>rar</code>, <code>7z</code>, <code>tar</code>, <code>gz</code>, <code>tgz</code>). If both <code>extensions</code> and <code>categories</code> are provided, <code>categories</code> might be combined or <code>extensions</code> might take precedence depending on the field.</td>
+</tr>
+</tbody>
+</table>
+<p>If <code>media</code> is set to a <code>string</code>, it is equivalent to settings both <code>media.input</code> and <code>media.output</code> to that value, prefixed with <code>/</code> for <code>media.output</code>.</p>
+<p>For example, <code>media: files/media</code> would be equivalent to:</p>
+<pre><code class="language-yaml hljs" data-highlighted="yes"><span class="hljs-attr">media:</span>
+  <span class="hljs-attr">input:</span> <span class="hljs-string">files/media</span>
+  <span class="hljs-attr">output:</span> <span class="hljs-string">/files/media</span>
+</code></pre>
+<p>If we want to define multiple media configurations, we can use an array (see examples below).</p>
+<h3 id="examples">Examples</h3>
+<p>Let's assume the content for my website is at the root of my repo:</p>
+<pre><code class="language-yaml hljs" data-highlighted="yes"><span class="hljs-attr">media:</span> <span class="hljs-string">files/media</span>
+</code></pre>
+<p>Now, if the content for this website was in a <code>src/</code> subfolder, it could look like this:</p>
+<pre><code class="language-yaml hljs" data-highlighted="yes"><span class="hljs-attr">media:</span>
+  <span class="hljs-attr">input:</span> <span class="hljs-string">src/media</span>
+  <span class="hljs-attr">output:</span> <span class="hljs-string">media</span>
+</code></pre>
+<p>Let's assume now that I'm hosting my website in a subfolder (e.g. hosted at <code>http://example.com/my-website/</code>), I may want to do the following:</p>
+<pre><code class="language-yaml hljs" data-highlighted="yes"><span class="hljs-attr">media:</span>
+  <span class="hljs-attr">input:</span> <span class="hljs-string">src/media</span>
+  <span class="hljs-attr">output:</span> <span class="hljs-string">/my-website/media</span>
+</code></pre>
+<p>Now, if I want to use a <code>files/documents</code> folder only for document uploads (e.g. pdf, doc, ppt) and another <code>images</code> folder with my photos that must be in <code>.png</code> or <code>.webp</code> formats, we could do the following:</p>
+<pre><code class="language-yaml hljs" data-highlighted="yes"><span class="hljs-attr">media:</span>
+  <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">files</span>
+    <span class="hljs-attr">label:</span> <span class="hljs-string">Files</span>
+    <span class="hljs-attr">input:</span> <span class="hljs-string">files/documents</span>
+    <span class="hljs-attr">output:</span> <span class="hljs-string">/files/documents</span>
+    <span class="hljs-attr">categories:</span> [ <span class="hljs-string">document</span> ]
+  <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">images</span> <span class="hljs-comment"># <span class="hljs-doctag">Note:</span> 'name' key is required here</span>
+    <span class="hljs-attr">label:</span> <span class="hljs-string">Images</span>
+    <span class="hljs-attr">input:</span> <span class="hljs-string">images</span>
+    <span class="hljs-attr">output:</span> <span class="hljs-string">/images</span>
+    <span class="hljs-attr">extensions:</span> [ <span class="hljs-string">png</span>, <span class="hljs-string">webp</span> ]
+</code></pre>
+<h2 id="content">Content</h2>
+<p>Content managed by the users: collections (e.g. blog posts) and file types (e.g. the home page). The <code>content</code> key should be set as an array of content entries.</p>
+<p><img src="Configuration%20-%20Pages%20CMS_files/nextjs-collection-light@2x.png" alt="Collection view"></p>
+<h3 id="keys-1">Keys</h3>
+<p>Each content entry can define the following keys:</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><code>name</code></strong></td>
+<td><code>string</code></td>
+<td><strong>Required and must be unique across the content array</strong>. Machine name for the content entry.</td>
+</tr>
+<tr>
+<td><strong><code>label</code></strong></td>
+<td><code>string</code></td>
+<td>Display name for the collection or single file. This will be displayed in the main menu.</td>
+</tr>
+<tr>
+<td><strong><code>type</code></strong></td>
+<td><code>string</code></td>
+<td><strong>Required</strong>. <code>collection</code> or <code>file</code>,
+ depending on whether the content entry is a collection of files with an
+ identical schema (e.g. blog posts) or a single file (e.g. home page).</td>
+</tr>
+<tr>
+<td><strong><code>path</code></strong></td>
+<td><code>string</code></td>
+<td><strong>Required</strong>. Path to the folder where the files are stored if it's a collection (e.g. <code>path: src/posts</code>, otherwise the path to the single file (e.g. <code>path: src/index.md</code>).</td>
+</tr>
+<tr>
+<td><strong><code>fields</code></strong></td>
+<td><code>string</code></td>
+<td>The list of fields defining the schema of the content entry (e.g. title, date, author, body, etc). <a href="#fields">See the "Fields" section below</a>.</td>
+</tr>
+<tr>
+<td><strong><code>filename</code></strong></td>
+<td><code>string</code></td>
+<td>The pattern to generate the filename when creating a new file. This 
+also defines how files are looked up. You can use the value of any field
+ (e.g. <code>) including nested values (e.g. </code>). You can also use a few date tokens (<code>{year}</code>, <code>{month}</code>, <code>{day}</code>) and time (<code>{hour}</code>, <code>{minute}</code>, <code>{second}</code>) and <code>{primary}</code> for the primary field as defined in the <code>view</code> key. By default this is set to <code>'{year}-{month}-{day}-{primary}.md'</code>.</td>
+</tr>
+<tr>
+<td><strong><code>exclude</code></strong></td>
+<td><code>array</code></td>
+<td>An array of files to exclude from the collection (e.g. <code>[ README.md ]</code>). This is only valid for collections.</td>
+</tr>
+<tr>
+<td><strong><code>view</code></strong></td>
+<td><code>object</code></td>
+<td><strong>Only valid for collections</strong>. This object defines the
+ various options for the collection view; visible fields, sorting 
+options and defaults, fields indexed for the search... <a href="#view">See the "View" section below</a>.</td>
+</tr>
+<tr>
+<td><strong><code>format</code></strong></td>
+<td><code>string</code></td>
+<td>The format of the file, used to set up the editor to edit the content: <code>yaml-frontmatter</code>, <code>json-frontmatter</code>, <code>toml-frontmatter</code>, <code>yaml</code>, <code>json</code>, <code>toml</code>, <code>datagrid</code>, <code>code</code> or <code>raw</code>. It defaults to <code>yaml-frontmatter</code>.</td>
+</tr>
+<tr>
+<td><strong><code>subfolders</code></strong></td>
+<td><code>boolean</code></td>
+<td>Whether or not the collection should display subfolders. Default to <code>true</code>. Set to <code>false</code> if you want to force the collection of files to be "flat".</td>
+</tr>
+</tbody>
+</table>
+<h3 id="examples-1">Examples</h3>
+<p>Let's assume we have a simple collection of blog posts all saved in the <code>src/_posts</code> folder:</p>
+<pre><code class="language-yaml hljs" data-highlighted="yes"><span class="hljs-attr">content:</span>
+  <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">posts</span>
+    <span class="hljs-attr">label:</span> <span class="hljs-string">Posts</span>
+    <span class="hljs-attr">path:</span> <span class="hljs-string">src/_posts</span>
+    <span class="hljs-attr">type:</span> <span class="hljs-string">collection</span>
+    <span class="hljs-attr">fields:</span>
+      <span class="hljs-comment"># ... fields defined here ...</span>
+  <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">authors</span>
+    <span class="hljs-attr">label:</span> <span class="hljs-string">Authors</span>
+    <span class="hljs-attr">path:</span> <span class="hljs-string">src/_data/authors.json</span>
+    <span class="hljs-attr">type:</span> <span class="hljs-string">file</span>
+    <span class="hljs-attr">fields:</span>
+      <span class="hljs-comment"># ... fields defined here ...</span>
+</code></pre>
+<h3 id="view">View</h3>
+<p>The <code>view</code> object is only valid for <code>type: collection</code>
+ content entries. It defines the configuration for the collection view, 
+aka the page that lists the entries for a collection which is accessed 
+from the main menu under a specific repo/branch (e.g. <code>https://app.pagescms.org/pages-cms/template-nextjs/content/posts/</code>).</p>
+<h4 id="keys-2">Keys</h4>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><code>fields</code></strong></td>
+<td><code>array</code></td>
+<td>List of the fields to be displayed in the collection view (e.g. <code>fields: [ title, published, author ]</code>). This can include nested fields and values (e.g. <code>fields: [ title, published, "tags[0]", author.name ]</code>). If not defined, it defaults to just the primary field (see below). The order of the fields is kept in the collection view.</td>
+</tr>
+<tr>
+<td><strong><code>primary</code></strong></td>
+<td><code>string</code></td>
+<td>The name of the field that should be used as the primary field (e.g. <code>primary: title</code>). If undefined, it will be set to the <code>title</code> field if it exists, otherwise the first field define in the content entry (e.g. <code>content.posts.fields[0].name</code>).</td>
+</tr>
+<tr>
+<td><strong><code>sort</code></strong></td>
+<td><code>array</code></td>
+<td>The list of fields that the collection can be sorted by (e.g. <code>sort: [ date, title ]</code>). By default, it is set to the date (if any) and the primary field.</td>
+</tr>
+<tr>
+<td><strong><code>search</code></strong></td>
+<td><code>array</code></td>
+<td>The list of fields that should be indexed for search. By default, all fields are indexed.</td>
+</tr>
+<tr>
+<td><strong><code>default</code></strong></td>
+<td><code>object</code></td>
+<td>Define the default values for search and sorting: <code>{ search: 'My keywords', sort: title, order: asc }</code>). <code>default.order</code> can be <code>asc</code> or <code>desc</code>. By default, <code>default.search</code> is empty, <code>default.sort</code> is the first field in the <code>sort</code> array and <code>default.order</code> is set to <code>desc</code>.</td>
+</tr>
+<tr>
+<td><strong><code>layout</code></strong></td>
+<td><code>string</code></td>
+<td>Controls the visual layout of the collection view, either <code>list</code> (default) or <code>tree</code> for a collapsible tree view.</td>
+</tr>
+<tr>
+<td><strong><code>node</code></strong></td>
+<td><code>string</code> or <code>object</code></td>
+<td>If a <code>string</code>, it will be treated as the value for <code>node.filename</code>. If an object, it can have 2 attributes: <code>filename</code> for the filename of the nodes (e.g. <code>index.md</code>) and <code>hideDirs</code> (can be <code>all</code>, <code>nodes</code> or <code>others</code>
+ to hide either all folders, only node folders or folders other than the
+ nodes'). A node is typically a nested file in a subfolder (e.g. <code>folder/subfolder/index.md</code>) that will show up as if it were in its parent folder (e.g. <code>folder/</code>)
+ and act as the parent of all of its siblings in the subfolder. It is 
+useful either if entries in your collection are nested (e.g. <code>2025-01-01-my-post/index.md</code>) or if you want to show a tree layout with nodes as parents of the subfolders' entries.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="examples-2">Examples</h4>
+<p>Assuming you have a <code>date</code> field and <code>title</code> is the primary field, your default configuration would look like:</p>
+<pre><code class="language-yaml hljs" data-highlighted="yes"><span class="hljs-attr">view:</span>
+  <span class="hljs-attr">fields:</span> [ <span class="hljs-string">title</span> ]
+  <span class="hljs-attr">primary:</span> <span class="hljs-string">title</span>
+  <span class="hljs-attr">sort:</span> [ <span class="hljs-string">date</span>, <span class="hljs-string">title</span> ]
+  <span class="hljs-attr">default:</span>
+    <span class="hljs-attr">search:</span> <span class="hljs-string">''</span>
+    <span class="hljs-attr">sort:</span> <span class="hljs-string">title</span>
+    <span class="hljs-attr">order:</span> <span class="hljs-string">desc</span>
+</code></pre>
+<p>This would display the title of each post and sort them by title in 
+descendant order (start with special characters and numbers, all the way
+ to <code>z</code>).</p>
+<p>Let's assume we also have the following:</p>
+<ul>
+<li><code>published</code>, a boolean that defines whether or not the post is published,</li>
+<li><code>author</code>, a string set to the name of the author.</li>
+</ul>
+<p>Let's set the view to only display the posts from <code>Patricia</code>, display title, date and the published state with the newer posts first:</p>
+<pre><code class="language-yaml hljs" data-highlighted="yes"><span class="hljs-attr">view:</span>
+  <span class="hljs-attr">fields:</span> [ <span class="hljs-string">title</span>, <span class="hljs-string">date</span>, <span class="hljs-string">published</span> ] <span class="hljs-comment"># title is the first entry and thus will be set to primary</span>
+  <span class="hljs-attr">sort:</span> [ <span class="hljs-string">date</span>, <span class="hljs-string">title</span>, <span class="hljs-string">published</span> ]
+  <span class="hljs-attr">default:</span>
+    <span class="hljs-attr">search:</span> <span class="hljs-string">'author:Patricia'</span>
+    <span class="hljs-attr">sort:</span> <span class="hljs-string">date</span>
+    <span class="hljs-attr">order:</span> <span class="hljs-string">desc</span>
+</code></pre>
+<p>The <code>author:Patricia</code> syntax <a href="https://lunrjs.com/guides/searching.html#fields">comes from lunr.js</a>,
+ the search library used by Pages CMS under the hood. Other syntax will 
+work too (wildcards, boosts, fuzzy matches and term presence).</p>
+<p>If I wanted to show a tree view of my collection, with some nodes:</p>
+<pre><code class="language-yaml hljs" data-highlighted="yes"><span class="hljs-attr">view:</span>
+  <span class="hljs-attr">layout:</span> <span class="hljs-string">tree</span>
+  <span class="hljs-attr">node:</span>
+    <span class="hljs-attr">filename:</span> <span class="hljs-string">index.md</span>
+    <span class="hljs-attr">hideDirs:</span> <span class="hljs-string">all</span> <span class="hljs-comment"># This will hide all subfolders, even if they do not contain a node</span>
+</code></pre>
+<h2 id="components">Components</h2>
+<p>Components allow you to define reusable groups of fields or field 
+configurations. They act like templates that can be referenced within 
+your content entries.</p>
+<p>Components are defined under a top-level <code>components</code> key in your <code>.pages.yml</code> file. This key holds an <em>object</em>
+ where each key is a unique component name, and the value is the 
+component definition. A component definition follows the same structure 
+as a standard <a href="#fields">Field definition</a> but without the <code>name</code> key.</p>
+<h3 id="component-definition-keys">Component Definition Keys</h3>
+<p>The keys used to define a component are the same as those used for <a href="#fields">Fields</a>, <strong>except</strong> the <code>name</code> key (which is defined by the key in the <code>components</code> object).</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><code>label</code></strong></td>
+<td><code>string</code></td>
+<td>Display name for the component. Primarily used for documentation or if referenced directly in certain UI contexts.</td>
+</tr>
+<tr>
+<td><strong><code>type</code></strong></td>
+<td><code>string</code></td>
+<td>The underlying base type of the component (e.g., <code>object</code>, <code>text</code>, <code>image</code>). Often <code>object</code> when grouping fields. If undefined but <code>fields</code> is present, defaults to <code>object</code>.</td>
+</tr>
+<tr>
+<td><strong><code>fields</code></strong></td>
+<td><code>array</code></td>
+<td>If <code>type</code> is <code>object</code>, this lists the fields contained within this component. These follow the standard <a href="#fields">Field</a> definition structure.</td>
+</tr>
+<tr>
+<td><strong><code>component</code></strong></td>
+<td><code>string</code></td>
+<td>Allows a component to inherit from <em>another</em> component. The 
+value should be the name (key) of the component to inherit from. 
+Properties from the inheriting component will override the base 
+component.</td>
+</tr>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>Other standard field keys like <code>description</code>, <code>default</code>, <code>list</code>, <code>hidden</code>, <code>required</code>, <code>pattern</code>, <code>options</code> can be used to configure the component itself.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="examples-3">Examples</h3>
+<p>Here's an example defining two components: a <code>hero</code> component with a headline and cover image, and a simple <code>email</code> component defining a reusable string field with pattern validation.</p>
+<pre><code class="language-yaml hljs" data-highlighted="yes"><span class="hljs-attr">components:</span>
+  <span class="hljs-attr">hero:</span> <span class="hljs-comment"># 'hero' is the component name/key</span>
+    <span class="hljs-attr">label:</span> <span class="hljs-string">Hero</span> <span class="hljs-string">Section</span>
+    <span class="hljs-attr">type:</span> <span class="hljs-string">object</span>
+    <span class="hljs-attr">fields:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">headline</span>
+        <span class="hljs-attr">label:</span> <span class="hljs-string">Headline</span>
+        <span class="hljs-attr">type:</span> <span class="hljs-string">text</span>
+        <span class="hljs-attr">required:</span> <span class="hljs-literal">true</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">cover</span>
+        <span class="hljs-attr">label:</span> <span class="hljs-string">Cover</span> <span class="hljs-string">Image</span>
+        <span class="hljs-attr">type:</span> <span class="hljs-string">image</span>
+  <span class="hljs-attr">email:</span> <span class="hljs-comment"># 'email' is the component name/key</span>
+    <span class="hljs-attr">label:</span> <span class="hljs-string">Email</span> <span class="hljs-string">Address</span>
+    <span class="hljs-attr">type:</span> <span class="hljs-string">string</span>
+    <span class="hljs-attr">pattern:</span>
+      <span class="hljs-attr">regex:</span> <span class="hljs-string">'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'</span>
+      <span class="hljs-attr">message:</span> <span class="hljs-string">'This must be a valid email address (e.g. hello@example.com).'</span>
+</code></pre>
+<p>These components can then be referenced by their name using the <code>component</code> key within the <code>fields</code> definition of your content types or even within other components.</p>
+<h2 id="fields">Fields</h2>
+<p>Fields define the structure and data types for your content entries or <a href="#components">components</a>.</p>
+<h3 id="keys-3">Keys</h3>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><code>name</code></strong></td>
+<td><code>string</code></td>
+<td><strong>Required</strong> (unless defining a component directly under the <code>components</code> key) <strong>and must be unique within its parent fields array</strong>. Machine name for the field. <strong><code>body</code> is reserved for the main content of the file when dealing with a frontmatter format</strong> (e.g., YAML frontmatter).</td>
+</tr>
+<tr>
+<td><strong><code>label</code></strong></td>
+<td><code>string</code></td>
+<td>Display name for the field. This is what is displayed in the edit form. If omitted, the <code>name</code> is used.</td>
+</tr>
+<tr>
+<td><strong><code>description</code></strong></td>
+<td><code>string</code></td>
+<td>Help text displayed below the field in the form.</td>
+</tr>
+<tr>
+<td><strong><code>type</code></strong></td>
+<td><code>string</code></td>
+<td>Defines the type of field. Can be a single type name: <strong><a href="https://pagescms.org/docs/configuration/block-field">block</a></strong>, <strong><a href="https://pagescms.org/docs/configuration/boolean-field">boolean</a></strong>, <strong><a href="https://pagescms.org/docs/configuration/code-field">code</a></strong>, <strong><a href="https://pagescms.org/docs/configuration/date-field">date</a></strong>, <strong><a href="https://pagescms.org/docs/configuration/file-field">file</a></strong>, <strong><a href="https://pagescms.org/docs/configuration/image-field">image</a></strong>, <strong><a href="https://pagescms.org/docs/configuration/number-field">number</a></strong>, <strong><a href="https://pagescms.org/docs/configuration/object-field">object</a></strong>, <strong><a href="https://pagescms.org/docs/configuration/reference-field">reference</a></strong>, <strong><a href="https://pagescms.org/docs/configuration/rich-text-field">rich-text</a></strong>, <strong><a href="https://pagescms.org/docs/configuration/select-field">select</a></strong>, <strong><a href="https://pagescms.org/docs/configuration/string-field">string</a></strong>, <strong><a href="https://pagescms.org/docs/configuration/text-field">text</a></strong> or <strong><a href="https://pagescms.org/docs/configuration/uuid-field">uuid</a></strong>. If undefined, it defaults to <code>text</code> unless <code>fields</code> is defined (then it defaults to <code>object</code>).</td>
+</tr>
+<tr>
+<td><strong><code>component</code></strong></td>
+<td><code>string</code></td>
+<td>Allows a field to inherit its properties (like <code>type</code>, <code>label</code>, nested <code>fields</code>, <code>options</code>, etc.) from a defined <a href="#components">Component</a>. The value should be the name (key) of the component to inherit from. Properties defined directly on the field (like <code>name</code>, <code>label</code>, <code>required</code>) will override those inherited from the component. The <code>type</code> inherited from the component takes precedence over any <code>type</code> defined on the field itself.</td>
+</tr>
+<tr>
+<td><strong><code>default</code></strong></td>
+<td>(any)</td>
+<td>Default value for the field when a new entry is created.</td>
+</tr>
+<tr>
+<td><strong><code>list</code></strong></td>
+<td><code>boolean</code> or <code>object</code></td>
+<td>If truthy, the field is an array of values (of the type defined for the field). <a href="#list">See the "List" section below</a>.</td>
+</tr>
+<tr>
+<td><strong><code>hidden</code></strong></td>
+<td><code>boolean</code></td>
+<td>If <code>true</code>, the field will not be displayed in the form but will be saved. It is usually used with <code>default</code> to set a required field that shouldn't be edited by users, like for example the language of a post (<code>lang: en-US</code>).</td>
+</tr>
+<tr>
+<td><strong><code>required</code></strong></td>
+<td><code>boolean</code></td>
+<td>If <code>true</code>, the field can't be empty.</td>
+</tr>
+<tr>
+<td><strong><code>pattern</code></strong></td>
+<td><code>string</code> or <code>object</code></td>
+<td>A regular expression to validate the field. A custom message for the error can be provided by defining an object with <code>regex</code> and <code>message</code> attributes (e.g. <code>pattern: { message: 'This must be a valid email address (e.g. hello@example.com).', regex: '^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$' }</code>)</td>
+</tr>
+<tr>
+<td><strong><code>fields</code></strong></td>
+<td><code>array</code></td>
+<td><strong>Only valid for object fields</strong>. List of the fields in that object.</td>
+</tr>
+<tr>
+<td><strong><code>options</code></strong></td>
+<td><code>object</code></td>
+<td>Options for that field. Refer to the field specific details below.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="list">List</h3>
+<p>Any field with a truthy <code>list</code> key will be stored as an array of that field type. For example:</p>
+<pre><code class="language-yaml hljs" data-highlighted="yes"><span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">images</span>
+  <span class="hljs-attr">label:</span> <span class="hljs-string">Images</span>
+  <span class="hljs-attr">type:</span> <span class="hljs-string">image</span>
+  <span class="hljs-attr">list:</span> <span class="hljs-literal">true</span>
+</code></pre>
+<p>Will allow the user to save multiple image paths:</p>
+<pre><code class="language-yaml hljs" data-highlighted="yes"><span class="hljs-attr">images:</span>
+  <span class="hljs-bullet">-</span> <span class="hljs-string">media/image-1.png</span>
+  <span class="hljs-bullet">-</span> <span class="hljs-string">media/image-2.png</span>
+</code></pre>
+<p><code>list</code> can be an object with <code>min</code>, <code>max</code>, <code>default</code> and <code>collapsible</code> keys. <code>min</code> and <code>max</code> define the minimum and maximum number of entries in the array. For example:</p>
+<pre><code class="language-yaml hljs" data-highlighted="yes"><span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">tags</span>
+  <span class="hljs-attr">label:</span> <span class="hljs-string">Tags</span>
+  <span class="hljs-attr">type:</span> <span class="hljs-string">string</span>
+  <span class="hljs-attr">list:</span>
+    <span class="hljs-attr">min:</span> <span class="hljs-number">1</span> <span class="hljs-comment"># Must have at least one tag</span>
+    <span class="hljs-attr">max:</span> <span class="hljs-number">5</span> <span class="hljs-comment"># Can have up to five tags</span>
+    <span class="hljs-attr">default:</span> [<span class="hljs-string">news</span>] <span class="hljs-comment"># Default value when creating new entry</span>
+</code></pre>
+<p>This will force the user to enter at least 1 tag and at most 5.</p>
+<p>By default, list entries are collapsible. You can disable this behavior by setting <code>collapsible</code> to <code>false</code>:</p>
+<pre><code class="language-yaml hljs" data-highlighted="yes"><span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">tags</span>
+  <span class="hljs-attr">label:</span> <span class="hljs-string">Tags</span>
+  <span class="hljs-attr">type:</span> <span class="hljs-string">string</span>
+  <span class="hljs-attr">list:</span>
+    <span class="hljs-attr">collapsible:</span> <span class="hljs-literal">false</span>
+</code></pre>
+<p>You can also configure the collapsible behavior by setting <code>collapsible</code> to an object with <code>collapsed</code> and <code>summary</code> properties:</p>
+<pre><code class="language-yaml hljs" data-highlighted="yes"><span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">sections</span>
+  <span class="hljs-attr">label:</span> <span class="hljs-string">Sections</span>
+  <span class="hljs-attr">type:</span> <span class="hljs-string">object</span>
+  <span class="hljs-attr">list:</span>
+    <span class="hljs-attr">collapsible:</span>
+      <span class="hljs-attr">collapsed:</span> <span class="hljs-literal">true</span> <span class="hljs-comment"># Default collapsed state</span>
+      <span class="hljs-attr">summary:</span> <span class="hljs-string">"{title} ({index})"</span> <span class="hljs-comment"># Template string using field values and {index}</span>
+</code></pre>
+<p>The <code>summary</code> template string can use:</p>
+<ul>
+<li>Field values using <code>{fields.fieldName}</code> syntax</li>
+<li>The index of the item using <code>{index}</code></li>
+</ul>
+<p>Certain fields (e.g. the <a href="https://pagescms.org/docs/configuration/image-field">image field</a>) implement their own list logic for handling multiple elements with the <code>mutliple</code> option. You can use either one approach, both result in an array of values.</p>
+<h3 id="field-types">Field Types</h3>
+<ul>
+<li><a href="https://pagescms.org/docs/configuration/block-field">Block field</a></li>
+<li><a href="https://pagescms.org/docs/configuration/boolean-field">Boolean field</a></li>
+<li><a href="https://pagescms.org/docs/configuration/code-field">Code field</a></li>
+<li><a href="https://pagescms.org/docs/configuration/date-field">Date field</a></li>
+<li><a href="https://pagescms.org/docs/configuration/file-field">File field</a></li>
+<li><a href="https://pagescms.org/docs/configuration/image-field">Image field</a></li>
+<li><a href="https://pagescms.org/docs/configuration/number-field">Number field</a></li>
+<li><a href="https://pagescms.org/docs/configuration/object-field">Object field</a></li>
+<li><a href="https://pagescms.org/docs/configuration/reference-field">Reference field</a></li>
+<li><a href="https://pagescms.org/docs/configuration/rich-text-field">Rich-text field</a></li>
+<li><a href="https://pagescms.org/docs/configuration/select-field">Select field</a></li>
+<li><a href="https://pagescms.org/docs/configuration/string-field">String field</a></li>
+<li><a href="https://pagescms.org/docs/configuration/text-field">Text field</a></li>
+<li><a href="https://pagescms.org/docs/configuration/uuid-field">UUID field</a></li>
+</ul>
+<h2 id="settings">Settings</h2>
+<p>This allows you to apply global settings within this repository and branch.</p>
+<h3 id="keys-4">Keys</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Key</th>
+<th style="text-align:left">Type</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>hide</code></td>
+<td style="text-align:left"><code>boolean</code></td>
+<td style="text-align:left">If set to <code>true</code>, the "Settings" link/page will be hidden in the Pages CMS UI.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>content</code></td>
+<td style="text-align:left"><code>object</code></td>
+<td style="text-align:left">An object containing settings specifically related to content handling.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>content</code></td>
+<td style="text-align:left"><code>object</code></td>
+<td style="text-align:left">An object containing settings specifically related to content handling.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>content.merge</code></td>
+<td style="text-align:left"><code>object</code></td>
+<td style="text-align:left">Defaults to <code>false</code>. If set to <code>true</code>,
+ when saving an existing content entry, the submitted fields will be 
+merged with the fields already present in the file. Fields present only 
+in the file will be preserved. Fields present in both will take the 
+value from the submitted form. If <code>false</code>, the file content 
+will be completely overwritten with the submitted form data (after 
+processing according to the schema). This is helpful if you want to 
+expose only parts of your file for editing.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="examples-4">Examples</h3>
+<p>To hide the settings editor and enable the content merge behavior:</p>
+<pre><code class="language-yaml hljs" data-highlighted="yes"><span class="hljs-attr">settings:</span>
+  <span class="hljs-attr">hide:</span> <span class="hljs-literal">true</span>
+  <span class="hljs-attr">content:</span>
+    <span class="hljs-attr">merge:</span> <span class="hljs-literal">true</span>
+</code></pre>
+<p>To just enable the content merge behavior:</p>
+<pre><code class="language-yaml hljs" data-highlighted="yes"><span class="hljs-attr">settings:</span>
+  <span class="hljs-attr">content:</span>
+    <span class="hljs-attr">merge:</span> <span class="hljs-literal">true</span>
+</code></pre>
+
+    </div>
+    
+  
+  
+  
+  
+    <footer class="flex gap-x-4 mt-8 pt-4 border-t">
+      
+        <a href="https://pagescms.org/docs/" class="button-outline flex items-center gap-x-2 truncate">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 shrink-0"><path d="m15 18-6-6 6-6"></path></svg>
+          <span class="max-w-1/2 truncate">Getting started</span>
+        </a>
+      
+      
+        <a href="https://pagescms.org/docs/configuration/block-field/" class="button-outline flex items-center gap-x-2 ml-auto truncate">
+          <span class="max-w-1/2 truncate">Block field</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 shrink-0"><path d="m9 18 6-6-6-6"></path></svg>
+        </a>
+      
+      </footer>
+  
+
+  </div>
+  
+  <div class="w-64 max-lg:hidden">
+    <div class="sticky top-16 text-sm">
+      <h2 class="font-semibold track-tight">On this page</h2>
+      <nav class="toc">
+        <ol><li><a href="#the-.pages.yml-file">The .pages.yml file</a></li><li><a href="#media">Media</a><ol><li><a href="#keys">Keys</a></li><li><a href="#examples">Examples</a></li></ol></li><li><a href="#content">Content</a><ol><li><a href="#keys-1">Keys</a></li><li><a href="#examples-1">Examples</a></li><li><a href="#view">View</a></li></ol></li><li><a href="#components">Components</a><ol><li><a href="#component-definition-keys">Component Definition Keys</a></li><li><a href="#examples-3">Examples</a></li></ol></li><li><a href="#fields">Fields</a><ol><li><a href="#keys-3">Keys</a></li><li><a href="#list">List</a></li><li><a href="#field-types">Field Types</a></li></ol></li><li><a href="#settings">Settings</a><ol><li><a href="#keys-4">Keys</a></li><li><a href="#examples-4">Examples</a></li></ol></li></ol>
+      </nav>
+    </div>
+  </div>
+</div>
+
+<link x-bind:href="darkMode ? 'https://unpkg.com/@highlightjs/cdn-assets@11.9.0/styles/github-dark.min.css' : 'https://unpkg.com/@highlightjs/cdn-assets@11.9.0/styles/github.min.css'" rel="stylesheet" href="Configuration%20-%20Pages%20CMS_files/github-dark.min.css">
+<script src="Configuration%20-%20Pages%20CMS_files/highlight.min.js"></script>
+<script src="Configuration%20-%20Pages%20CMS_files/yaml.min.js"></script>
+<script>document.addEventListener('DOMContentLoaded', function() { hljs.highlightAll(); });</script>
+  <footer class="flex items-center gap-x-3 p-4 lg:p-6 text-xs text-muted-foreground">
+  <span>© <a class="hover:text-primary" href="https://ronanberder.com/">Ronan Berder</a></span>
+  <a class="hover:text-primary" href="https://pagescms.org/terms">Terms</a>
+  <a class="hover:text-primary" href="https://pagescms.org/privacy">Privacy</a>
+  <a class="ml-auto hover:text-primary" href="https://github.com/pages-cms" target="_blank">
+    <svg fill="currentColor" class="h-4 w-4" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg>
+  </a>
+  <a class="hover:text-primary" href="https://pagescms.org/chat" target="_blank">
+    <svg fill="currentColor" class="h-4 w-4" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Discord</title><path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189Z"></path></svg>
+  </a>
+  <a class="hover:text-primary" href="https://x.com/pagescms" target="_blank">
+    <svg class="h-4 w-4" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor"><title>X</title><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"></path></svg>
+  </a>
+  <button class="hover:text-primary h-4 w-4" @click="darkMode = !darkMode">
+    <template x-if="darkMode"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg></template><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg>
+    <template x-if="!darkMode"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></svg></template>
+  </button>
+</footer>
+  <!-- Cloudflare Web Analytics --><script defer="defer" src="Configuration%20-%20Pages%20CMS_files/beacon.min.js" data-cf-beacon="{&quot;token&quot;: &quot;7a480a97e93340c1a837ad9c764aa3b9&quot;}"></script><!-- End Cloudflare Web Analytics -->
+
+
+</body></html>

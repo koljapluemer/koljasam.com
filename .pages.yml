@@ -1,0 +1,90 @@
+media:
+  - name: project-images
+    label: Project Images
+    input: static/img/projects
+    output: /img/projects
+    categories: [image]
+
+content:
+  - name: projects
+    label: Projects
+    type: collection
+    path: src/projects
+    format: yaml-frontmatter
+    view:
+      fields: [title, type, tags]
+      primary: title
+      sort: [type, title]
+      default:
+        sort: title
+        order: asc
+    fields:
+      - name: layout
+        type: string
+        hidden: true
+        default: layouts/base.njk
+      - name: title
+        label: Title
+        type: text
+        required: true
+      - name: type
+        label: Status
+        type: select
+        options:
+          - main
+          - active
+          - past
+      - name: tags
+        label: Tags
+        type: string
+        list:
+          collapsible:
+            collapsed: true
+      - name: main-link-label
+        label: Primary Link Label
+        type: string
+      - name: main-link-href
+        label: Primary Link URL
+        type: string
+        pattern:
+          regex: '^https?://'
+          message: 'Use a full URL starting with http:// or https://'
+      - name: links
+        label: Additional Links
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+        fields:
+          - name: label
+            label: Label
+            type: string
+            required: true
+          - name: url
+            label: URL
+            type: string
+            required: true
+            pattern:
+              regex: '^https?://'
+              message: 'Use a full URL starting with http:// or https://'
+      - name: footer-links
+        label: Footer Links
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+        fields:
+          - name: label
+            label: Label
+            type: string
+            required: true
+          - name: url
+            label: URL
+            type: string
+            required: true
+            pattern:
+              regex: '^https?://'
+              message: 'Use a full URL starting with http:// or https://'
+      - name: body
+        label: Body
+        type: text
