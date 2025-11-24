@@ -85,10 +85,10 @@ title: Home
       {% for post in collections.a4 %}
         <li class="space-y-1">
           <div class="text-xs text-slate-400">
-            {{ post.fileSlug | parseFilenameDate }}
+            {{ post.data.date | formatDate }}
           </div>
           <a href="{{ post.url }}" class="block text-slate-600 hover:text-slate-900">
-            {{ post.fileSlug | extractTitle }}
+            {{ post.data.title }}
           </a>
         </li>
       {% endfor %}

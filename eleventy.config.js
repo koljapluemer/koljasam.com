@@ -4,7 +4,13 @@ import markdownIt from "markdown-it";
 import { DateTime } from "luxon";
 
 export default function(eleventyConfig) {
-  const md = new markdownIt();
+  let options = {
+    html: true,
+    breaks: true,
+    linkify: true
+  };
+
+  eleventyConfig.setLibrary("md", markdownIt(options));
   eleventyConfig.addCollection("projects", c =>
     c.getFilteredByGlob("src/projects/*.md")
   );
@@ -14,6 +20,7 @@ export default function(eleventyConfig) {
   );
 
   eleventyConfig.addPassthroughCopy({ "static": "." });
+  eleventyConfig.addPassthroughCopy({ "src/a4/media": "a4/media" });
   eleventyConfig.addPassthroughCopy({
     "node_modules/flowbite/dist/flowbite.min.js": "js/flowbite.min.js"
   });
@@ -35,20 +42,13 @@ export default function(eleventyConfig) {
 
   // add markdown filter
   eleventyConfig.addFilter("md", function(content) {
-    return md.renderInline(content);
+    return markdownIt(options).renderInline(content);
   });
 
-  // parse date from filename format "DD-MM-YY Title"
-  eleventyConfig.addFilter("parseFilenameDate", function(fileSlug) {
-    const datePart = fileSlug.split(' ')[0];
-    const [day, month, year] = datePart.split('-');
-    const dt = DateTime.fromObject({ year: 2000 + parseInt(year), month: parseInt(month), day: parseInt(day) });
+  // format date using Luxon
+  eleventyConfig.addFilter("formatDate", function(date) {
+    const dt = DateTime.fromJSDate(date);
     return dt.toFormat('MMM d, yyyy');
-  });
-
-  // extract title from filename format "DD-MM-YY Title"
-  eleventyConfig.addFilter("extractTitle", function(fileSlug) {
-    return fileSlug.split(' ').slice(1).join(' ');
   });
 
   return {
