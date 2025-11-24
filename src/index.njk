@@ -14,23 +14,85 @@ title: Home
   </header>
 
   <section class="space-y-6">
-    <h2 class="text-2xl font-semibold text-slate-900">Primary Projects</h2>
-    {% set projectCollection = collections.mainProjects %}
-    {% set gridClass = "xl:grid-cols-1" %}
-    {% include "partials/project-list.njk" %}
+    <h2 class="text-2xl font-semibold text-slate-900">Projects</h2>
+    <div class="grid gap-6 sm:gap-8 sm:grid-cols-2 xl:grid-cols-3 xl:grid-cols-1">
+      {%- for project in collections.projects -%}
+      <article class="flex h-full flex-col overflow-hidden rounded-xl border border-gray-200 bg-white shadow transition-shadow hover:shadow-lg focus-within:shadow-lg">
+        <div class="flex items-center justify-center bg-gray-50 px-4 py-8 sm:px-6 sm:py-10">
+          {{ projectImage(project.fileSlug) | safe }}
+        </div>
+        <div class="flex flex-1 flex-col gap-3 p-5 sm:gap-4 sm:p-6">
+          <h3 class="text-xl font-semibold text-gray-900">
+            {{ project.data.title | md | safe }}
+          </h3>
+          <div class="space-y-2 text-sm text-gray-600">
+            {{ project.templateContent | safe }}
+          </div>
+          {% if project.data['main-link-href'] %}
+          <div class="mt-auto">
+            <a href="{{ project.data['main-link-href'] }}" class="inline-flex items-center gap-2 rounded-lg bg-blue-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-300">
+              {{ project.data['main-link-label'] or 'View Project' }}
+              <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </a>
+          </div>
+          {% endif %}
+          {% if project.data.links %}
+          <ul class="space-y-2 text-sm font-medium text-gray-700">
+            {% for link in project.data.links %}
+            {% if link.url and link.label %}
+            <li>
+              <a href="{{ link.url }}" class="inline-flex items-center gap-2 text-gray-700 hover:text-gray-900">
+                <span>{{ link.label }}</span>
+                <i data-lucide="arrow-right" class="w-4 h-4"></i>
+              </a>
+            </li>
+            {% endif %}
+            {% endfor %}
+          </ul>
+          {% endif %}
+          {% if project.data.tags %}
+          <div class="flex flex-wrap items-center justify-start gap-2">
+            {%- for tag in project.data.tags -%}
+            <span class="inline-flex items-center rounded-full bg-gray-100 px-3 py-0.5 text-xs font-medium text-gray-800">{{ tag }}</span>
+            {%- endfor -%}
+          </div>
+          {% endif %}
+        </div>
+        {% if project.data['footer-links'] %}
+        <footer class="border-t border-gray-200 bg-gray-50 px-5 py-4 text-sm font-medium text-gray-700 sm:px-6">
+          <ul class="space-y-2">
+            {% for link in project.data['footer-links'] %}
+            {% if link.url and link.label %}
+            <li>
+              <a href="{{ link.url }}" class="inline-flex w-full items-center justify-between rounded-lg border border-transparent px-3 py-2 transition hover:border-gray-200 hover:bg-white hover:text-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-200">
+                <span class="text-left leading-snug text-gray-700">{{ link.label }}</span>
+                <i data-lucide="arrow-right" class="w-4 h-4 shrink-0 text-gray-400"></i>
+              </a>
+            </li>
+            {% endif %}
+            {% endfor %}
+          </ul>
+        </footer>
+        {% endif %}
+      </article>
+      {%- endfor -%}
+    </div>
   </section>
 
   <section class="space-y-6">
-    <h2 class="text-2xl font-semibold text-slate-900">Currently Working On</h2>
-    {% set projectCollection = collections.activeProjects %}
-    {% set gridClass = "" %}
-    {% include "partials/project-list.njk" %}
+    <h2 class="text-2xl font-semibold text-slate-900">Writing</h2>
+    <ul class="space-y-4">
+      {% for post in collections.a4 %}
+        <li class="space-y-1">
+          <div class="text-xs text-slate-400">
+            {{ post.fileSlug | parseFilenameDate }}
+          </div>
+          <a href="{{ post.url }}" class="block text-slate-600 hover:text-slate-900">
+            {{ post.fileSlug | extractTitle }}
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
   </section>
 
-  <section class="space-y-6">
-    <h2 class="text-2xl font-semibold text-slate-900">Past Experiments</h2>
-    {% set projectCollection = collections.pastProjects %}
-    {% set gridClass = "" %}
-    {% include "partials/project-list.njk" %}
-  </section>
 </section>

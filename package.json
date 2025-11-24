@@ -23,7 +23,9 @@
   "homepage": "https://github.com/koljapluemer/koljasam.com#readme",
   "dependencies": {
     "@11ty/eleventy": "^3.1.2",
-    "flowbite": "^2.5.1"
+    "flowbite": "^2.5.1",
+    "lucide": "^0.554.0",
+    "luxon": "^3.7.2"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.20",
