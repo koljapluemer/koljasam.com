@@ -4,10 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Kolja Sam&#x27;s Website</title>
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/water.css@2/out/light.css"
-    />
   </head>
 
   <body>
@@ -97,4 +93,18 @@
       </ul>
     </main>
   </body>
+
+  <style>
+    html {
+      max-width: 70ch;
+      padding: calc(1vmin + 0.5rem);
+      margin-inline: auto;
+      font-size: clamp(1em, 0.909em + 0.45vmin, 1.25em);
+      font-family: system-ui;
+    }
+
+    body :not(:is(h1, h2, h3, h4, h5, h6)) {
+      line-height: 1.75;
+    }
+  </style>
 </html>
