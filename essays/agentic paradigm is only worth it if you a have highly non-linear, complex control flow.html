@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>agentic paradigm is only worth it if you a have highly non-linear, complex control flow</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      font-family: serif;
+      color: #1c1c1c;
+        max-width: 90ch;
+        padding: 3em 1em;
+        margin: 0 auto;
+        line-height: 1.95;
+        font-size: 1.45rem;
+        font-weight: bold;
+        font-family: serif;
+    }
+
+    h1 {
+        font-family: sans-serif;
+          font-size: clamp(1.8rem, 4vw + 1rem, 3rem);
+  line-height: 1.1;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background: rgb(184, 72, 27);
+      background-image: radial-gradient(rgb(126, 48, 17) 5%, transparent 0);
+      background-size: 35px 35px;
+      min-height: 100vh;
+    }
+
+    .essay {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .essay p {
+      margin: 0;
+    }
+
+    .card {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: white;
+      border-radius: 24px;
+      padding: 24px;
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+    }
+
+    .image-card img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+<h1 class="title">agentic paradigm is only worth it if you a have highly non-linear, complex control flow</h1>
+<div class="essay"><p>my top heuristic of when to use agentic AI:</p>
+<div class="card image-card"><img src="img/ll00.png" alt="Image"></div>
+
+<p>state as in state machine:</p>
+<div class="card image-card"><img src="img/ll01.png" alt="Image"></div>
+
+<p>combinatorial explosion as in chess moves:</p>
+<div class="card image-card"><img src="img/ll06.png" alt="Image"></div>
+
+<p>when there <em>isn't</em> such an explosion of states, giving control of software flow to an LLM is never worth it. If there is (such as for open-ended, long-horizon coding tasks), it may:</p>
+<div class="card image-card"><img src="img/ll08.png" alt="Image"></div></div>
+</body>
+</html>
