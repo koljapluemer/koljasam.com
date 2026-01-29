@@ -36,6 +36,40 @@
     </section>
     <section>
       <h2>Projects</h2>
+
+      <div class="grid-2">
+        
+        <div class="card card-vertical">
+          <img src="projects/Pasted image 20260128213121.png" alt="">
+          <h3>Basic Egyptian Arabic Sentences</h3>
+          
+
+
+          
+        </div>
+        
+        <div class="card card-vertical">
+          <img src="projects/New Project(2).png" alt="">
+          <h3>Currency Conversion Practice</h3>
+          
+          <small>Small Vue app to practice mentally converting from one currency to another</small>
+          
+
+
+          
+        </div>
+        
+        <div class="card card-vertical">
+          <img src="projects/New Project(3).png" alt="">
+          <h3>cut-up-and-practice</h3>
+          
+
+
+          
+        </div>
+        
+      </div>
+
       <ul>
         <li>
           I'm building an <a href="https://sitlang.netlify.app" target="_blank">as-of-yet-unnamed app for learning the
@@ -120,6 +154,64 @@
             <a href="media/infographic_001_godot_scenes.png" target="_blank">PNG</a>
           </li>
         </ul>
+
+        
+        <div class="grid-2">
+          
+          <div class="card card-vertical">
+            <div class="card-badges">
+            
+            <div class="badge">archived</div>
+            
+            
+            </div>
+            <img src="projects/New Project(4).png" alt="">
+            <h3>inspirationbot</h3>
+            
+            <small>A website recommending random reference pictures for art practice.</small>
+            
+            
+            
+            <small class="card-links">
+            
+            <a href="https://inspo.koljapluemer.com/versions/collage/main" target="_blank">website</a>
+            
+            <a href="https://github.com/koljapluemer/inspirationbot" target="_blank">legacy repository</a>
+            
+            <a href="https://github.com/koljapluemer/inspiration-bot" target="_blank">new repository</a>
+            
+            </small>
+            
+          </div>
+          
+          <div class="card card-vertical">
+            <div class="card-badges">
+            
+            <div class="badge">archived</div>
+            
+            
+            <div class="badge">failed</div>
+            
+            </div>
+            <img src="projects/New Project(1).png" alt="">
+            <h3>memorization.cafe</h3>
+            
+            <small>Online Spaced Repetition app supporting advanced data types for memorizing not only flashcards but also lists, verbatim quotes and concepts via elaborative interrogation</small>
+            
+            
+            <small class="failure-note">bespoke data types lead to an explosion of complexity in UI, UX and data flow</small>
+            
+            
+            <small class="card-links">
+            
+            <a href="https://memorizationcafe.netlify.app" target="_blank">webapp</a>
+            
+            </small>
+            
+          </div>
+          
+        </div>
+        
       </details>
     </section>
 
@@ -193,12 +285,72 @@
     flex-direction: row;
     gap: 8px;
     margin: 0;
+    position: relative
+  }
+
+  .card-vertical {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card-vertical img {
+    max-width: 100%;
   }
 
   .grid-2 {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 16px;
+  }
+
+  h3 {
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    width: 100%;
+  }
+
+  .card-badges {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    display: flex;
+    flex-direction: row;
+    gap: 4px;
+  }
+
+  .badge {
+    border: 1px #222 solid;
+    padding: 4px;
+    border-radius: 4px;
+    font-size: 9pt;
+    font-family: monospace;
+    background-color: lightgrey;
+    opacity: 0.7
+  }
+
+  .card-links {
+    display: flex;
+    flex-direction: row;
+    gap: 4px;
+    flex-wrap: wrap;
+  }
+  
+  .card-links a {
+    white-space: nowrap;
+  }
+
+  .failure-note {
+    background-color: rgba(255, 25, 0, 0.14);
+    font-size: 9pt;
+    padding: 4px;
+    border-radius: 4px;
+  }
+
+  @media (max-width: 600px) {
+    .grid-2 {
+      grid-template-columns: 1fr;
+    }
   }
 </style>
 

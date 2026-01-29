@@ -36,6 +36,28 @@
     </section>
     <section>
       <h2>Projects</h2>
+
+      <div class="grid-2">
+        {% for project in projects %}
+        <div class="card card-vertical">
+          <img src="{{ project.image }}" alt="">
+          <h3>{{ project.title }}</h3>
+          {% if 'description' in project %}
+          <small>{{project.description}}</small>
+          {% endif %}
+
+
+          {% if project.links %}
+          <small class="card-links">
+          {% for label, url in project.links.items() %}
+          <a href="{{ url }}" target="_blank">{{ label }}</a>
+          {% endfor %}
+          </small>
+          {% endif %}
+        </div>
+        {% endfor %}
+      </div>
+
       <ul>
         <li>
           I'm building an <a href="https://sitlang.netlify.app" target="_blank">as-of-yet-unnamed app for learning the
@@ -120,6 +142,38 @@
             <a href="media/infographic_001_godot_scenes.png" target="_blank">PNG</a>
           </li>
         </ul>
+
+        {% if archived_projects %}
+        <div class="grid-2">
+          {% for project in archived_projects %}
+          <div class="card card-vertical">
+            <div class="card-badges">
+            {% if project.archived %}
+            <div class="badge">archived</div>
+            {% endif %}
+            {% if project.failed %}
+            <div class="badge">failed</div>
+            {% endif %}
+            </div>
+            <img src="{{ project.image }}" alt="">
+            <h3>{{ project.title }}</h3>
+            {% if project.description %}
+            <small>{{ project.description }}</small>
+            {% endif %}
+            {% if project.failed %}
+            <small class="failure-note">{{ project.failed }}</small>
+            {% endif %}
+            {% if project.links %}
+            <small class="card-links">
+            {% for label, url in project.links.items() %}
+            <a href="{{ url }}" target="_blank">{{ label }}</a>
+            {% endfor %}
+            </small>
+            {% endif %}
+          </div>
+          {% endfor %}
+        </div>
+        {% endif %}
       </details>
     </section>
 
@@ -173,12 +227,72 @@
     flex-direction: row;
     gap: 8px;
     margin: 0;
+    position: relative
+  }
+
+  .card-vertical {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card-vertical img {
+    max-width: 100%;
   }
 
   .grid-2 {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 16px;
+  }
+
+  h3 {
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    width: 100%;
+  }
+
+  .card-badges {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    display: flex;
+    flex-direction: row;
+    gap: 4px;
+  }
+
+  .badge {
+    border: 1px #222 solid;
+    padding: 4px;
+    border-radius: 4px;
+    font-size: 9pt;
+    font-family: monospace;
+    background-color: lightgrey;
+    opacity: 0.7
+  }
+
+  .card-links {
+    display: flex;
+    flex-direction: row;
+    gap: 4px;
+    flex-wrap: wrap;
+  }
+  
+  .card-links a {
+    white-space: nowrap;
+  }
+
+  .failure-note {
+    background-color: rgba(255, 25, 0, 0.14);
+    font-size: 9pt;
+    padding: 4px;
+    border-radius: 4px;
+  }
+
+  @media (max-width: 600px) {
+    .grid-2 {
+      grid-template-columns: 1fr;
+    }
   }
 </style>
 

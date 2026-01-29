@@ -1,9 +1,22 @@
+import json
 import re
 from pathlib import Path
 
 import fitz
 from jinja2 import Environment, FileSystemLoader
 from PIL import Image
+
+
+def load_projects(projects_dir: Path) -> list[dict]:
+    """Load project data from JSON files in the projects folder."""
+    projects = []
+    for json_file in sorted(projects_dir.glob("*.json")):
+        with open(json_file) as f:
+            data = json.load(f)
+        # Pass through all fields, just fix the image path
+        data["image"] = f"projects/{data['image']}"
+        projects.append(data)
+    return projects
 
 
 def extract_title_from_typ(typ_path: Path) -> str | None:
@@ -28,6 +41,13 @@ def generate_thumbnail(pdf_path: Path, output_path: Path) -> None:
 def main():
     base_dir = Path(__file__).parent
     a4_dir = base_dir / "A4"
+    projects_dir = base_dir / "projects"
+
+    # Load projects and split into active/archived
+    all_projects = load_projects(projects_dir)
+    projects = [p for p in all_projects if not p.get("archived")]
+    archived_projects = [p for p in all_projects if p.get("archived")]
+    print(f"Loaded {len(projects)} active projects, {len(archived_projects)} archived")
 
     cards = []
 
@@ -69,7 +89,7 @@ def main():
     # Render template
     env = Environment(loader=FileSystemLoader(base_dir))
     template = env.get_template("index.html.jinja")
-    html = template.render(cards=cards)
+    html = template.render(cards=cards, projects=projects, archived_projects=archived_projects)
 
     output_path = base_dir / "index.html"
     output_path.write_text(html)

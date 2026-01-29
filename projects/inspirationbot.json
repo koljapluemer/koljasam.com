@@ -1,0 +1,11 @@
+{
+  "title": "inspirationbot",
+  "image": "New Project(4).png",
+  "description": "A website recommending random reference pictures for art practice.",
+  "archived": true,
+  "links": {
+    "website": "https://inspo.koljapluemer.com/versions/collage/main",
+    "legacy repository": "https://github.com/koljapluemer/inspirationbot",
+    "new repository": "https://github.com/koljapluemer/inspiration-bot"
+  }
+}

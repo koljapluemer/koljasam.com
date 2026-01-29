@@ -1,0 +1,10 @@
+{
+  "title": "memorization.cafe",
+  "image": "New Project(1).png",
+  "description": "Online Spaced Repetition app supporting advanced data types for memorizing not only flashcards but also lists, verbatim quotes and concepts via elaborative interrogation",
+  "archived": true,
+  "failed": "bespoke data types lead to an explosion of complexity in UI, UX and data flow",
+  "links": {
+    "webapp": "https://memorizationcafe.netlify.app"
+  }
+}
