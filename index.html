@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Kolja Sam&#x27;s Website</title>
   <script data-goatcounter="https://koljapluemer.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
 </head>
 
 <body>
@@ -114,7 +115,7 @@
             <a target="_blank" href="https://habit-prompter.netlify.app/">memorization cafe</a>.
           </li>
           <li>
-            I made an infographic explaining how to instantiate/duplicate/spawn a scene in Godot: 
+            I made an infographic explaining how to instantiate/duplicate/spawn a scene in Godot:
             <a href="media/infographic_001_godot_scenes.pdf" target="_blank">PDF</a>,
             <a href="media/infographic_001_godot_scenes.png" target="_blank">PNG</a>
           </li>
@@ -129,14 +130,40 @@
       <p>
         I log smaller, self-contained findings and experiments in a single-page PDF format:
       </p>
-      <ul>
-        <li><a href="media/26-01a-infinite-sentences.pdf" target="_blank">A Sentence-Based Language Learning Application</a></li>
-        <li><a href="media/26_01b_quotes_by_related_flashcards.pdf" target="_blank">Memorizing Verbatim Quotes With Interdependent Flashcards</a></li>
-        <li><a href="media/26_01c_llm_flashcard_integration.pdf" target="_blank">Integrating LLM-Generated Flashcards as an Adhoc Measure Into a Spaced Repetition Flow</a></li>
-        <li><a href="media/26_01d_time_pressure_sentence_learning.pdf" target="_blank">Practicing Target Language Vocabulary With a Time-Pressure Sentence Cloze Game</a></li>
-        <li><a href="media/26_01e_mental_currency_conversion.pdf" target="_blank">A Webapp to Practice Mental Currency Conversion</a></li>
-     
-      </ul>
+
+      <div class="grid-2">
+        <figure class="card">
+          <img src="a4/26-01a-infinite-sentences.png" alt="" style="max-width: 150px;">
+          <figcaption><a href="a4/26-01a-infinite-sentences.pdf" target="_blank">A Sentence-Based Language Learning
+              Application</a></figcaption>
+        </figure>
+        <figure class="card">
+          <img src="a4/26_01b_quotes_by_related_flashcards.png" alt="" style="max-width: 150px;">
+          <figcaption><a href="a4/26_01b_quotes_by_related_flashcards.pdf" target="_blank">
+              Memorizing Verbatim Quotes
+              With
+              Interdependent Flashcards</a></figcaption>
+        </figure>
+        <figure class="card">
+          <img src="a4/26_01c_llm_flashcard_integration.png" alt="" style="max-width: 150px;">
+          <figcaption><a href="a4/26_01c_llm_flashcard_integration.pdf" target="_blank">Integrating LLM-Generated
+              Flashcards as
+              an Adhoc Measure Into a Spaced Repetition Flow</a></figcaption>
+        </figure>
+        <figure class="card">
+          <img src="a4/26_01d_time_pressure_sentence_learning.png" alt="" style="max-width: 150px;">
+          <figcaption><a href="a4/26_01d_time_pressure_sentence_learning.pdf" target="_blank">Practicing Target
+              Language
+              Vocabulary With a Time-Pressure Sentence Cloze Game</a></figcaption>
+        </figure>
+        <figure class="card">
+          <img src="a4/26_01e_mental_currency_conversion.png" alt="" style="max-width: 150px;">
+          <figcaption><a href="a4/26_01e_mental_currency_conversion.pdf" target="_blank">A Webapp to Practice Mental
+              Currency
+              Conversion</a></figcaption>
+        </figure>
+      </div>
+
     </section>
   </main>
   <footer>
@@ -155,10 +182,27 @@
     margin-inline: auto;
     font-size: clamp(1em, 0.909em + 0.45vmin, 1.25em);
     font-family: system-ui;
+    color: #222
   }
 
   body :not(:is(h1, h2, h3, h4, h5, h6)) {
     line-height: 1.75;
+  }
+
+  .card {
+    border: 1px #222 solid;
+    border-radius: 8px;
+    padding: 8px;
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    margin: 0;
+  }
+
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
   }
 </style>
 
