@@ -17,9 +17,9 @@ def optimize_image(img: Image.Image, output_path: Path) -> None:
         new_height = int(img.height * ratio)
         img = img.resize((MAX_WIDTH, new_height), Image.Resampling.LANCZOS)
 
-    # Convert to RGB if necessary (WebP doesn't support all modes)
-    if img.mode in ("RGBA", "P"):
-        img = img.convert("RGB")
+    # Convert palette images to RGBA to preserve transparency
+    if img.mode == "P":
+        img = img.convert("RGBA")
 
     img.save(output_path, "WEBP", quality=WEBP_QUALITY)
 
