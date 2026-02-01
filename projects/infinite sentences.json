@@ -1,0 +1,11 @@
+{
+  "title": "infinite sentences",
+  "image": "Pasted image 20260201145214.png",
+  "description": "Data-driven sentence learning app where you practice exactly the vocabulary needed to understand a piece of natural language.",
+  "showcase": true,
+  "links": {
+    "Frontend Repo": "https://github.com/koljapluemer/infinite-sentences-frontend",
+    "Dataset": "https://github.com/koljapluemer/infinite-sentences-frontend",
+    "Online App": "https://infinite-sentences.netlify.app"
+  }
+}

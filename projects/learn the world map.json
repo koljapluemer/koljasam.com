@@ -1,0 +1,10 @@
+{
+  "title": "learn the world map",
+  "image": "screenshot 3.png",
+  "description": "A geography game where you learn where every country in the world is.",
+  "showcase": true,
+  "links": {
+    "Game": "https://map.koljapluemer.com/",
+    "Repository": "https://github.com/koljapluemer/learn-worldmap"
+  }
+}
