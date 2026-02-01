@@ -73,11 +73,11 @@ def main():
     a4_dir = base_dir / "A4"
     projects_dir = base_dir / "projects"
 
-    # Load projects and split into active/archived
+    # Load projects and split into showcase/other
     all_projects = load_projects(projects_dir)
-    projects = [p for p in all_projects if not p.get("archived")]
-    archived_projects = [p for p in all_projects if p.get("archived")]
-    print(f"Loaded {len(projects)} active projects, {len(archived_projects)} archived")
+    projects = [p for p in all_projects if p.get("showcase")]
+    other_projects = [p for p in all_projects if not p.get("showcase")]
+    print(f"Loaded {len(projects)} showcase projects, {len(other_projects)} other")
 
     cards = []
 
@@ -119,7 +119,7 @@ def main():
     # Render template
     env = Environment(loader=FileSystemLoader(base_dir))
     template = env.get_template("index.html.jinja")
-    html = template.render(cards=cards, projects=projects, archived_projects=archived_projects)
+    html = template.render(cards=cards, projects=projects, other_projects=other_projects)
 
     output_path = base_dir / "index.html"
     output_path.write_text(html)
