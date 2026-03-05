@@ -1,0 +1,9 @@
+{
+  "title": "don't-translate",
+  "image": "New Project(5) 1.png",
+  "description": "tiny language learning app where you learn with images instead of translations",
+  "links": {
+    "frontend repository": "https://github.com/koljapluemer/dont-translate",
+    "prototype": "https://donttranslate.koljasam.com"
+  }
+}
