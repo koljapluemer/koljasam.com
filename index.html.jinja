@@ -5,6 +5,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Kolja Sam's Website</title>
+  <script>
+    window.goatcounter = {
+      path: function (p) { return location.host + p }
+    }
+  </script>
   <script data-goatcounter="https://koljapluemer.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
   <link rel="icon" href="/favicon.ico" type="image/x-icon">
 </head>
@@ -19,7 +24,8 @@
 
     <div class="cards-grid">
       {% for card in cards %}
-      <article class="card{% if card.image_left %} card-horizontal{% endif %}{% if card.paused %} card-paused{% endif %}"
+      <article
+        class="card{% if card.image_left %} card-horizontal{% endif %}{% if card.paused %} card-paused{% endif %}"
         style="--cols: {{ card.cols }}; --rows: {{ card.rows }};">
         <div class="card-main">
           {% if card.thumbnail %}
