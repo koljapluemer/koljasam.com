@@ -10,46 +10,37 @@
 </head>
 
 <body>
-  <header>
-    <h1>Kolja Sam Pluemer</h1>
-  </header>
-
   <main>
-    <p>My mission is to make the world a better place by building excellent tools for learning.</p>
+    <h1>Kolja Sam Pluemer</h1>
 
-    <section>
-      <h2>Contact</h2>
-      <ul>
-        <li><b>Get in touch at <em>contact (at) koljasam.com</em>.</b></li>
-        <li><a href="https://github.com/koljapluemer" target="_blank">GitHub</a></li>
-      </ul>
-    </section>
+    <p>My mission is to make the world a better place by building excellent tools for learning. <br /> Get in touch at
+      <em>contact (at) koljasam.com</em>.
+    </p>
 
-    <section>
-      <h2>Cards</h2>
-      <div class="cards-grid">
-        {% for card in cards %}
-        <article class="card{% if card.image_left %} card-horizontal{% endif %}"
-          style="--cols: {{ card.cols }}; --rows: {{ card.rows }};">
-          {% if card.thumbnail %}
-          <img src="{{ card.thumbnail }}" alt="">
+    <div class="cards-grid">
+      {% for card in cards %}
+      <article class="card{% if card.image_left %} card-horizontal{% endif %}"
+        style="--cols: {{ card.cols }}; --rows: {{ card.rows }};">
+
+        <div class="badge">{{ card.type }}</div>
+
+        {% if card.thumbnail %}
+        <img src="{{ card.thumbnail }}" alt="">
+        {% endif %}
+
+        <div class="card-content">
+          {% if card.url %}
+          <h3><a href="{{ card.url }}" target="_blank">{{ card.title }}</a></h3>
+          {% else %}
+          <h3>{{ card.title }}</h3>
           {% endif %}
-
-          <div class="card-content">
-            <div class="badge">{{ card.type }}</div>
-            {% if card.url %}
-            <h3><a href="{{ card.url }}" target="_blank">{{ card.title }}</a></h3>
-            {% else %}
-            <h3>{{ card.title }}</h3>
-            {% endif %}
-            {% if card.description %}
-            <small>{{ card.description }}</small>
-            {% endif %}
-          </div>
-        </article>
-        {% endfor %}
-      </div>
-    </section>
+          {% if card.description %}
+          <small>{{ card.description }}</small>
+          {% endif %}
+        </div>
+      </article>
+      {% endfor %}
+    </div>
   </main>
 </body>
 
@@ -64,6 +55,8 @@
 
   a {
     color: #222;
+    text-decoration-style: dotted;
+    text-decoration-color: #4b4b4b;
   }
 
   body :not(:is(h1, h2, h3, h4, h5, h6)) {
@@ -125,7 +118,7 @@
     padding: 2px 6px;
     border-radius: 4px;
     background-color: #e6e6e6;
-    text-transform:uppercase;
+    text-transform: uppercase;
     font-size: 7pt;
     color: #4b4b4b;
     font-family: monospace;
