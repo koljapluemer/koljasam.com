@@ -1,6 +1,7 @@
 {
     "url": "https://github.com/koljapluemer/files/blob/main/26_02b_list_memorization.pdf",
-    "format": "WIDE",
+    "rows": 2,
+    "cols": 1,
     "type": "a4 report", 
     "title": "Flow for Integrating Unordered List Memorization Into a Spaced Repetition Flashcard App"
 }

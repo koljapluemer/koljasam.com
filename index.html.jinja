@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kolja Sam&#x27;s Website</title>
+  <title>Kolja Sam's Website</title>
   <script data-goatcounter="https://koljapluemer.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
   <link rel="icon" href="/favicon.ico" type="image/x-icon">
 </head>
@@ -13,246 +13,144 @@
   <header>
     <h1>Kolja Sam Pluemer</h1>
   </header>
+
   <main>
-    <p>
-      My mission is to make the world a better place by building excellent
-      tools for learning.
-    </p>
+    <p>My mission is to make the world a better place by building excellent tools for learning.</p>
+
     <section>
       <h2>Contact</h2>
       <ul>
-        <li>
-          <b>
-            Get in touch at <em>contact (at) koljasam.com</em>.
-          </b>
-        </li>
-        <li>
-          <a href="https://github.com/koljapluemer" target="_blank">GitHub</a>
-        </li>
+        <li><b>Get in touch at <em>contact (at) koljasam.com</em>.</b></li>
+        <li><a href="https://github.com/koljapluemer" target="_blank">GitHub</a></li>
       </ul>
     </section>
+
     <section>
-      <h2>Projects</h2>
-
-      <div class="grid-2">
-        {% for project in projects %}
-        <div class="card card-vertical">
-          <img src="{{ project.image }}" alt="">
-          <h3>{{ project.title }}</h3>
-          {% if 'description' in project %}
-          <small>{{project.description}}</small>
+      <h2>Cards</h2>
+      <div class="cards-grid">
+        {% for card in cards %}
+        <article class="card{% if card.image_left %} card-horizontal{% endif %}"
+          style="--cols: {{ card.cols }}; --rows: {{ card.rows }};">
+          {% if card.thumbnail %}
+          <img src="{{ card.thumbnail }}" alt="">
           {% endif %}
 
-
-          {% if project.links %}
-          <small class="card-links">
-          {% for label, url in project.links.items() %}
-          <a href="{{ url }}" target="_blank">{{ label }}</a>
-          {% endfor %}
-          </small>
-          {% endif %}
-        </div>
-        {% endfor %}
-      </div>
-
-      <ul>
-        <li>
-          I'm building an <a href="https://sitlang.netlify.app" target="_blank">as-of-yet-unnamed app for learning the
-            exact <b>language skills</b> that you need in a specific
-            situation</a> (instead of, say, random grammar).
-        </li>
-      </ul>
-      <details>
-        <summary>Small, strange & old projects</summary>
-        <ul>
-          <li>
-            If you are interested in being more mindful of your computer usage, you may be interested in <a
-              href="https://github.com/koljapluemer/why-turn-on-computer" target="_blank">why-turn-on-computer</a>.
-          </li>
-          <li>
-            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none"
-              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-              class="lucide lucide-square-terminal-icon lucide-square-terminal">
-              <path d="m7 11 2-2-2-2" />
-              <path d="M11 13h4" />
-              <rect width="18" height="18" x="3" y="3" rx="2" ry="2" />
-            </svg>
-            If you are interested in <b>managing habits</b>, todos and
-            checking-in-with-yourself questions in a hyper-minimal, retro-terminal-inspired app, go
-            <a target="_blank" href="https://habit-prompter.netlify.app/">here</a>.
-          </li>
-          <li>
-            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none"
-              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-              class="lucide lucide-inbox-icon lucide-inbox">
-              <polyline points="22 12 16 12 14 15 10 15 8 12 2 12" />
-              <path
-                d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z" />
-            </svg>
-            I am building <a href="https://github.com/koljapluemer/obsidian-to-html"
-              target="_blank">obsidian-to-html</a>,
-            a
-            static site
-            generator based on <a href="https://obsidian.md/" target="_blank">Obsidan.md</a> vaults. It powers the
-            digital
-            garden mentioned below.
-          </li>
-          <li>
-            I made an infographic explaining how to instantiate/duplicate/spawn a scene in Godot:
-            <a href="media/infographic_001_godot_scenes.pdf" target="_blank">PDF</a>,
-            <a href="media/infographic_001_godot_scenes.png" target="_blank">PNG</a>
-          </li>
-        </ul>
-
-        {% if other_projects %}
-        <div class="grid-2">
-          {% for project in other_projects %}
-          <div class="card card-vertical">
-            <div class="card-badges">
-            {% if project.archived %}
-            <div class="badge">archived</div>
+          <div class="card-content">
+            <div class="badge">{{ card.type }}</div>
+            {% if card.url %}
+            <h3><a href="{{ card.url }}" target="_blank">{{ card.title }}</a></h3>
+            {% else %}
+            <h3>{{ card.title }}</h3>
             {% endif %}
-            {% if project.failed %}
-            <div class="badge">failed</div>
-            {% endif %}
-            </div>
-            <img src="{{ project.image }}" alt="">
-            <h3>{{ project.title }}</h3>
-            {% if project.description %}
-            <small>{{ project.description }}</small>
-            {% endif %}
-            {% if project.failed %}
-            <small class="failure-note">{{ project.failed }}</small>
-            {% endif %}
-            {% if project.links %}
-            <small class="card-links">
-            {% for label, url in project.links.items() %}
-            <a href="{{ url }}" target="_blank">{{ label }}</a>
-            {% endfor %}
-            </small>
+            {% if card.description %}
+            <small>{{ card.description }}</small>
             {% endif %}
           </div>
-          {% endfor %}
-        </div>
-        {% endif %}
-      </details>
-    </section>
-
-    <section>
-      <h2>
-        Experiments
-      </h2>
-      <p>
-        I log smaller, self-contained findings and experiments in a single-page PDF format:
-      </p>
-
-      <div class="grid-2">
-        {% for card in cards %}
-        <figure class="card">
-          <img src="{{ card.thumbnail }}" alt="" style="max-width: 150px;">
-          <figcaption><a href="{{ card.pdf_path }}" target="_blank">{{ card.title }}</a></figcaption>
-        </figure>
+        </article>
         {% endfor %}
       </div>
-
     </section>
   </main>
-  <footer>
-    <h2>Notes</h2>
-    <small>
-      Made by me with <a href="https://github.com/koljapluemer/koljasam.com" target="_blank">plain HTML</a>; no cookies;
-      nothing tracked except anonymous page views.
-    </small>
-  </footer>
 </body>
 
 <style>
   html {
-    max-width: 70ch;
+    max-width: 100ch;
     padding: calc(1vmin + 0.5rem);
     margin-inline: auto;
-    font-size: clamp(1em, 0.909em + 0.45vmin, 1.25em);
     font-family: system-ui;
-    color: #222
+    color: #222;
+  }
+
+  a {
+    color: #222;
   }
 
   body :not(:is(h1, h2, h3, h4, h5, h6)) {
-    line-height: 1.75;
+    line-height: 1.6;
+  }
+
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-auto-rows: minmax(180px, auto);
+    grid-auto-flow: row dense;
+    gap: 16px;
   }
 
   .card {
     border: 1px #222 solid;
     border-radius: 8px;
-    padding: 8px;
+    padding: 10px;
     display: flex;
-    flex-direction: row;
-    gap: 8px;
-    margin: 0;
-    position: relative
-  }
-
-  .card-vertical {
     flex-direction: column;
-    align-items: center;
+    gap: 8px;
+    grid-column: span var(--cols, 1);
+    grid-row: span var(--rows, 1);
   }
 
-  .card-vertical img {
-    max-width: 100%;
+  .card img {
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
+    object-fit: cover;
   }
 
-  .grid-2 {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
+  .card-horizontal {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .card-horizontal img {
+    width: 36%;
+    max-width: 240px;
+    align-self: stretch;
+  }
+
+  .card-content {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 0;
   }
 
   h3 {
     margin: 0;
-    padding: 0;
-    text-align: left;
-    width: 100%;
-  }
-
-  .card-badges {
-    position: absolute;
-    top: 8px;
-    left: 8px;
-    display: flex;
-    flex-direction: row;
-    gap: 4px;
+    line-height: 1.3;
+    font-size: 14pt;
   }
 
   .badge {
-    border: 1px #222 solid;
-    padding: 4px;
+    width: fit-content;
+    padding: 2px 6px;
     border-radius: 4px;
-    font-size: 9pt;
+    background-color: #e6e6e6;
+    text-transform:uppercase;
+    font-size: 7pt;
+    color: #4b4b4b;
     font-family: monospace;
-    background-color: lightgrey;
-    opacity: 0.7
   }
 
-  .card-links {
-    display: flex;
-    flex-direction: row;
-    gap: 12px;
-    flex-wrap: wrap;
-  }
-  
-  .card-links a {
-    white-space: nowrap;
-  }
-
-  .failure-note {
-    background-color: rgba(255, 25, 0, 0.14);
-    font-size: 9pt;
-    padding: 4px;
-    border-radius: 4px;
+  @media (max-width: 900px) {
+    .cards-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
   }
 
   @media (max-width: 600px) {
-    .grid-2 {
+    .cards-grid {
       grid-template-columns: 1fr;
+    }
+
+    .card {
+      grid-column: span 1;
+      grid-row: span 1;
+      flex-direction: column;
+    }
+
+    .card-horizontal img {
+      width: 100%;
+      max-width: none;
     }
   }
 </style>

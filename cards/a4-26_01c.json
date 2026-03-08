@@ -1,6 +1,7 @@
 {
     "url": "https://github.com/koljapluemer/files/blob/main/26_01c_llm_flashcard_integration.pdf",
-    "format": "WIDE",
+    "rows": 2,
+    "cols": 1,
     "type": "a4 report", 
     "title": "Integrating LLM-Generated Flashcards as an Adhoc Measure Into a Spaced Repetition Flow"
 }

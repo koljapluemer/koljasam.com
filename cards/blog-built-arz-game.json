@@ -2,5 +2,6 @@
     "type": "report",
     "title": "I built a time-pressure game to practice Egyptian Arabic sentences",
     "url": "https://koljasam.substack.com/p/i-built-a-time-pressure-game-to-practice",
-    "format": "ULTRAWIDE"
+    "rows": 1,
+    "cols": 1
 }
