@@ -1,0 +1,8 @@
+{
+  "type": "learnapp",
+  "title": "withvideos",
+  "description": "Learn Arabic and German by learning the vocabulary to understand native speaker videos.",
+  "rows": 2,
+  "cols": 2,
+  "publish": false
+}

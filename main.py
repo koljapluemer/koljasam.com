@@ -1,4 +1,5 @@
 import json
+import subprocess
 from pathlib import Path
 
 from jinja2 import Environment, FileSystemLoader
@@ -19,15 +20,18 @@ def load_cards(base_dir: Path) -> list[dict]:
     thumbnails_dir = base_dir / "thumbnails"
 
     cards: list[dict] = []
-    for card_path in sorted(cards_dir.glob("*.json")):
+    for card_path in cards_dir.glob("*.json"):
         data = json.loads(card_path.read_text())
+        if data.get("publish") is False:
+            continue
 
-        title = data.get("title") or data.get("name")
+        title = data.get("title")
         if not title:
             continue
 
         rows = parse_int(data.get("rows"), 1)
         cols = min(parse_int(data.get("cols"), 1), GRID_COLUMNS)
+        card_type = str(data.get("type", "item"))
 
         thumbnail_path = thumbnails_dir / f"{card_path.stem}.webp"
 
@@ -35,16 +39,46 @@ def load_cards(base_dir: Path) -> list[dict]:
             {
                 "title": title,
                 "description": data.get("description"),
-                "type": str(data.get("type", "item")),
+                "type": card_type,
                 "url": data.get("url"),
                 "rows": rows,
                 "cols": cols,
                 "image_left": cols > rows,
+                "paused": data.get("paused") is True,
+                "links": normalize_links(data.get("links")),
                 "thumbnail": f"thumbnails/{thumbnail_path.name}" if thumbnail_path.exists() else None,
+                "git_touched_at": git_last_touched_timestamp(base_dir, card_path),
             }
         )
 
+    cards.sort(key=lambda c: c["git_touched_at"], reverse=True)
     return cards
+
+
+def git_last_touched_timestamp(repo_dir: Path, file_path: Path) -> int:
+    rel_path = file_path.relative_to(repo_dir)
+    cmd = ["git", "log", "-1", "--format=%ct", "--", str(rel_path)]
+    result = subprocess.run(cmd, cwd=repo_dir, capture_output=True, text=True, check=False)
+    if result.returncode != 0:
+        return 0
+    value = result.stdout.strip()
+    if not value:
+        return 0
+    try:
+        return int(value)
+    except ValueError:
+        return 0
+
+
+def normalize_links(raw_links: object) -> list[dict]:
+    if not isinstance(raw_links, dict):
+        return []
+    links: list[dict] = []
+    for label, url in raw_links.items():
+        if not isinstance(label, str) or not isinstance(url, str):
+            continue
+        links.append({"label": label, "url": url})
+    return links
 
 
 def main() -> None:

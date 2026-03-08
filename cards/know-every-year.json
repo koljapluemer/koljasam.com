@@ -1,0 +1,8 @@
+{
+  "type": "learnapp",
+  "title": "know-every-year",
+  "description": "An adaptive app to learn world history events by year using the Major System",
+  "rows": 2,
+  "cols": 2,
+  "publish": false
+}

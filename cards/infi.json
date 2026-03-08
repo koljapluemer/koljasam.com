@@ -1,7 +1,8 @@
 {
-  "type": "project",
-  "name": "Infinite Sentences",
+  "type": "learnapp",
+  "title": "Infinite Sentences",
   "description": "Data-driven sentence learning app where you learn exactly the vocabulary you need to understand a piece of natural language",
-    "rows": 2,
-    "cols": 2
+  "rows": 2,
+  "cols": 2,
+  "url": "https://infi.koljasam.com/"
 }

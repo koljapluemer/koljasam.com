@@ -1,6 +1,6 @@
 {
-  "type": "project",
-  "name": "karten",
+  "type": "learnapp",
+  "title": "karten",
   "description": "Free online Spaced Repetition Software with experimental features such as interdependent flashcards",
   "rows": 2,
   "cols": 2

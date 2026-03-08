@@ -1,0 +1,8 @@
+{
+  "type": "tool",
+  "title": "The Queue",
+  "description": "An Obsidian.md plugin randomly exposing you to your notes. Supports habits, to-dos, spaced repetition flashcards, iterative reading and more.",
+  "rows": 1,
+  "cols": 1,
+  "url": "https://github.com/koljapluemer/obsidian-the-queue"
+}

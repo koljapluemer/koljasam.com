@@ -1,0 +1,8 @@
+{
+  "type": "learnapp",
+  "title": "Basic Egyptian Sentences Trainer",
+  "description": "Get a feeling for Egyptian Arabic with a cloze deletion game",
+  "rows": 2,
+  "cols": 2,
+  "publish": false
+}
