@@ -26,7 +26,7 @@
       
       <article
         class="card"
-        style="--cols: 2; --rows: 2;">
+        style="--cols: 2; --cols-md: 2; --rows: 2;">
         <div class="card-main">
           
           <img class="card-thumbnail" src="thumbnails/infi.webp" alt="">
@@ -54,7 +54,7 @@
       
       <article
         class="card"
-        style="--cols: 2; --rows: 2;">
+        style="--cols: 2; --cols-md: 2; --rows: 2;">
         <div class="card-main">
           
           <img class="card-thumbnail" src="thumbnails/karten.webp" alt="">
@@ -88,7 +88,7 @@
       
       <article
         class="card"
-        style="--cols: 2; --rows: 2;">
+        style="--cols: 2; --cols-md: 2; --rows: 2;">
         <div class="card-main">
           
           <img class="card-thumbnail" src="thumbnails/basic-egyptian-sentences.webp" alt="">
@@ -118,7 +118,7 @@
       
       <article
         class="card"
-        style="--cols: 2; --rows: 2;">
+        style="--cols: 2; --cols-md: 2; --rows: 2;">
         <div class="card-main">
           
           <img class="card-thumbnail" src="thumbnails/currency-conversion-practice.webp" alt="">
@@ -146,7 +146,7 @@
       
       <article
         class="card"
-        style="--cols: 1; --rows: 1;">
+        style="--cols: 1; --cols-md: 1; --rows: 1;">
         <div class="card-main">
           
 
@@ -166,7 +166,7 @@
       
       <article
         class="card"
-        style="--cols: 2; --rows: 2;">
+        style="--cols: 2; --cols-md: 2; --rows: 2;">
         <div class="card-main">
           
           <img class="card-thumbnail" src="thumbnails/arabic-numbers-practice.webp" alt="">
@@ -188,7 +188,7 @@
       
       <article
         class="card card-horizontal card-paused"
-        style="--cols: 2; --rows: 1;">
+        style="--cols: 2; --cols-md: 2; --rows: 1;">
         <div class="card-main">
           
           <img class="card-thumbnail" src="thumbnails/arabic-concordances-explorer.webp" alt="">
@@ -216,7 +216,7 @@
       
       <article
         class="card"
-        style="--cols: 1; --rows: 1;">
+        style="--cols: 1; --cols-md: 1; --rows: 1;">
         <div class="card-main">
           
 
@@ -383,6 +383,10 @@
   @media (max-width: 56.25rem) {
     .cards-grid {
       grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .card {
+      grid-column: span var(--cols-md, 1);
     }
   }
 

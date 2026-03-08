@@ -10,7 +10,7 @@
       path: function (p) { return location.host + p }
     }
   </script>
-  <script data-goatcounter="https://koljapluemer.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+  <script data-goatcounter="https://koljasam.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
   <link rel="icon" href="/favicon.ico" type="image/x-icon">
 </head>
 
@@ -26,7 +26,7 @@
       {% for card in cards %}
       <article
         class="card{% if card.image_left %} card-horizontal{% endif %}{% if card.paused %} card-paused{% endif %}"
-        style="--cols: {{ card.cols }}; --rows: {{ card.rows }};">
+        style="--cols: {{ card.cols }}; --cols-md: {{ 2 if card.cols > 2 else card.cols }}; --rows: {{ card.rows }};">
         <div class="card-main">
           {% if card.thumbnail %}
           <img class="card-thumbnail" src="{{ card.thumbnail }}" alt="">
@@ -205,6 +205,10 @@
   @media (max-width: 56.25rem) {
     .cards-grid {
       grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .card {
+      grid-column: span var(--cols-md, 1);
     }
   }
 
