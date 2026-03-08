@@ -3,5 +3,11 @@
   "title": "karten",
   "description": "Free online Spaced Repetition Software with experimental features such as interdependent flashcards",
   "rows": 2,
-  "cols": 2
+  "cols": 2,
+  "links": {
+    "Memorizing Verbatim Quotes With Interdependent Flashcards": "https://github.com/koljapluemer/files/blob/main/a4_26_01b.pdf",
+    "Integrating LLM-Generated Flashcards as an Adhoc Measure Into a Spaced Repetition Flow": "https://github.com/koljapluemer/files/blob/main/26_01c_llm_flashcard_integration.pdf",
+    "A Screensaver-Style UI For Passive Flashcard Learning": "https://github.com/koljapluemer/files/blob/main/26_02a_float.pdf",
+    "Flow for Integrating Unordered List Memorization Into a Spaced Repetition Flashcard App": "https://github.com/koljapluemer/files/blob/main/26_02b_list_memorization.pdf"
+  }
 }
