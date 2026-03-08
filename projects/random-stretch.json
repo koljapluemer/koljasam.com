@@ -1,9 +1,0 @@
-{
-  "title": "random-stretch",
-  "image": "screenshot 2.png",
-  "description": "A website recommending you a stretching exercise you can do right now.",
-  "links": {
-    "Website": "https://stretch.koljapluemer.com/",
-    "Repository": "https://github.com/koljapluemer/random-stretch"
-  }
-}
