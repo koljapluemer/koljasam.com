@@ -1,0 +1,12 @@
+{
+  "type": "blog",
+  "title": "cards",
+  "description": "Posts and notes in the form of independent cards",
+  "rows": 3,
+  "cols": 1,
+  "url": "https://cards.koljasam.com/",
+  "links": {
+    "Personal Productivity Philosophy": "https://cards.koljasam.com/posts/personal-productivity-philosophy",
+    "everything I know about writing well": "https://cards.koljasam.com/posts/everything-i-know-about-writing-well"
+  }
+}
