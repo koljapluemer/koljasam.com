@@ -3,9 +3,8 @@
   "title": "Arabic Concordances Explorer",
   "description": "Practice Arabic (MSA) by exploring sentences & concordances",
   "rows": 1,
-  "cols": 2,
+  "cols": 1,
   "url": "https://concordances.koljasam.com/",
-  "paused": true,
   "links": {
     "Disconnected thoughts on why my concordances tool is not fun to use": "https://koljasam.substack.com/p/disconnected-thoughts-on-why-my-concordances"
   }

@@ -1,0 +1,11 @@
+{
+  "type": "blog",
+  "title": "zk",
+  "description": "I publish a zettelkasten-style digital garden on how to build learning tools",
+  "rows": 1,
+  "cols": 1,
+  "url": "https://zk.koljasam.com/",
+  "links": {
+    "Built with the custom-made obsidian-to-web SSG": "https://github.com/koljapluemer/obsidian-to-web"
+  }
+}

@@ -2,8 +2,9 @@
   "type": "learnapp",
   "title": "Currency Conversion Challenger",
   "description": "Small Vue app to practice mentally converting from one currency to another",
-  "rows": 2,
-  "cols": 2,
+  "rows": 1,
+  "cols": 1,
+  "url": "https://currency.koljasam.com/",
   "links": {
     "A Webapp to Practice Mental Currency Conversion": "https://github.com/koljapluemer/files/blob/main/26_01e_mental_currency_conversion.pdf"
   }
