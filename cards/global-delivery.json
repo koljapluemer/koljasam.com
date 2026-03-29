@@ -1,5 +1,7 @@
 {
     "title": "Unnamed Global Delivery Game",
     "description": "Casual 3D logistics game where you schedule routes & deliveries on a stylized Earth",
-    "url": "https://kolja-sam.itch.io/global-delivery"
+    "url": "https://kolja-sam.itch.io/global-delivery",
+    "rows": 2,
+    "cols": 2
 }
