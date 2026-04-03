@@ -34,8 +34,7 @@
     <div class="cards-grid">
       {% for card in cards %}
       <article
-        class="card{% if card.image_left %} card-horizontal{% endif %}{% if card.paused %} card-paused{% endif %}"
-        style="--cols: {{ card.cols }}; --cols-md: {{ 2 if card.cols > 2 else card.cols }}; --rows: {{ card.rows }};">
+        class="card{% if card.paused %} card-paused{% endif %}">
         <div class="card-main">
           {% if card.thumbnail %}
           <img class="card-thumbnail" src="{{ card.thumbnail }}" alt="">
@@ -149,8 +148,6 @@
     display: flex;
     flex-direction: column;
     gap: var(--space-2);
-    grid-column: span var(--cols, 1);
-    grid-row: span var(--rows, 1);
   }
 
   .card-main {
@@ -168,23 +165,7 @@
     object-position: center;
   }
 
-  .card-horizontal {
-    align-items: stretch;
-  }
-
-  .card-horizontal .card-main {
-    flex-direction: row;
-    align-items: flex-start;
-  }
-
-  .card-horizontal .card-main>.card-thumbnail {
-    flex: 0 0 36%;
-    width: 36%;
-    max-width: 15rem;
-    align-self: flex-start;
-  }
-
-  .card-content {
+.card-content {
     display: flex;
     flex-direction: column;
     gap: var(--space-2);
@@ -215,10 +196,6 @@
     .cards-grid {
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
-
-    .card {
-      grid-column: span var(--cols-md, 1);
-    }
   }
 
   @media (max-width: 37.5rem) {
@@ -232,16 +209,7 @@
       flex-direction: column;
     }
 
-    .card-horizontal .card-main {
-      flex-direction: column;
-    }
-
-    .card-horizontal .card-main>.card-thumbnail {
-      width: 100%;
-      flex: 0 0 auto;
-      max-width: none;
-    }
-  }
+}
 </style>
 
 </html>
