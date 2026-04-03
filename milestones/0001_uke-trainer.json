@@ -1,0 +1,12 @@
+{
+    "evaluation": "FAILED",
+    "started": "26-04-01",
+    "ended": "26-04-03",
+    "goal": "Make a tool that allow me continuous improvement for fingerpicking ukulele songs",
+    "showTheWorld": "post on relevant subreddit?",
+    "comments": [
+        "note detection in browser way more nasty than I thought",
+        "made some progress in a (non-gh) repo using pyqt, as seen in [this tweet](https://x.com/kolja_sam/status/2039688160867680448?s=20)",
+        "Too unsure about data source for songs, data model, and how the math/feedback cluster can work"
+    ]
+}
