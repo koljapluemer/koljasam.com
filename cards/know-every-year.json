@@ -1,8 +1,7 @@
 {
   "type": "learnapp",
+  "url": "https://github.com/koljapluemer/know-every-year",
   "title": "know-every-year",
   "description": "An adaptive app to learn world history events by year using the Major System",
-  "rows": 2,
-  "cols": 2,
-  "publish": false
+  "failed": "Couldn't find a coherent flow unifying adding years, adding events, adding mnemonics, and practicing all of that"
 }

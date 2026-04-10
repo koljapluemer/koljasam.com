@@ -33,7 +33,7 @@
 
 
     <div class="cards-grid">
-      {% for card in cards %}
+      {% for card in cards if not card.failed %}
       <article
         class="card{% if card.paused %} card-paused{% endif %}">
         <div class="card-main">
@@ -64,6 +64,45 @@
       </article>
       {% endfor %}
     </div>
+
+    {% set failed_cards = cards | selectattr("failed") | list %}
+    {% if failed_cards %}
+    <details class="failed-section">
+      <summary>Failed Projects &amp; Experiments</summary>
+      <div class="cards-grid">
+        {% for card in failed_cards %}
+        <article class="card{% if card.paused %} card-paused{% endif %}">
+          <div class="card-main">
+            {% if card.thumbnail %}
+            <img class="card-thumbnail" src="{{ card.thumbnail }}" alt="">
+            {% endif %}
+
+            <div class="card-content">
+              <h3 class="card-title">
+                {% if card.url %}
+                <a href="{{ card.url }}" target="_blank">{{ card.title }}</a>
+                {% else %}
+                <span>{{ card.title }}</span>
+                {% endif %}
+              </h3>
+              {% if card.description %}
+              <small>{{ card.description }}</small>
+              {% endif %}
+              <small class="card-failed-reason">{{ card.failed }}</small>
+            </div>
+          </div>
+          {% if card.links %}
+          <div class="card-links">
+            {% for link in card.links %}
+            <a href="{{ link.url }}" target="_blank">{{ link.label }}</a>
+            {% endfor %}
+          </div>
+          {% endif %}
+        </article>
+        {% endfor %}
+      </div>
+    </details>
+    {% endif %}
 
         <p>If you want to know what I'm acutely working on, check the <a href="/milestones.html">milestones</a>.</p>
   </main>
@@ -179,6 +218,17 @@
   .card-title a,
   .card-title span {
     min-width: 0;
+  }
+
+  .failed-section summary {
+    cursor: pointer;
+    user-select: none;
+    margin-bottom: var(--space-3);
+  }
+
+  .card-failed-reason {
+    color: var(--text-2);
+    font-style: italic;
   }
 
   .card-links {

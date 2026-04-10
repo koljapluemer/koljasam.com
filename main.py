@@ -68,6 +68,7 @@ def load_cards(base_dir: Path) -> list[dict]:
                 "paused": data.get("paused") is True,
                 "links": normalize_links(data.get("links")),
                 "thumbnail": f"thumbnails/{thumbnail_path.name}" if thumbnail_path.exists() else None,
+                "failed": normalize_text(data.get("failed")),
                 "git_touched_at": git_last_touched_timestamp(base_dir, card_path),
             }
         )

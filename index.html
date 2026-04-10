@@ -38,6 +38,27 @@
         class="card">
         <div class="card-main">
           
+          <img class="card-thumbnail" src="thumbnails/what-to-do-next.webp" alt="">
+          
+
+          <div class="card-content">
+            <h3 class="card-title">
+              
+              <a href="https://github.com/koljapluemer/what-to-do-next" target="_blank">what-to-do-next</a>
+              
+            </h3>
+            
+            <small>A tiny desktop tool for collecting and displaying ideas on what I could do now</small>
+            
+          </div>
+        </div>
+        
+      </article>
+      
+      <article
+        class="card">
+        <div class="card-main">
+          
           <img class="card-thumbnail" src="thumbnails/dumb-notes.webp" alt="">
           
 
@@ -160,27 +181,6 @@
             </h3>
             
             <small>Casual 3D logistics game where you schedule routes & deliveries on a stylized Earth</small>
-            
-          </div>
-        </div>
-        
-      </article>
-      
-      <article
-        class="card">
-        <div class="card-main">
-          
-          <img class="card-thumbnail" src="thumbnails/beworded.webp" alt="">
-          
-
-          <div class="card-content">
-            <h3 class="card-title">
-              
-              <a href="https://kolja-sam.itch.io/beworded" target="_blank">Beworded</a>
-              
-            </h3>
-            
-            <small>Prototype of a Bejeweled-style vocabulary game</small>
             
           </div>
         </div>
@@ -609,28 +609,76 @@
         
       </article>
       
-      <article
-        class="card">
-        <div class="card-main">
-          
-          <img class="card-thumbnail" src="thumbnails/what-to-do-next.webp" alt="">
-          
-
-          <div class="card-content">
-            <h3 class="card-title">
-              
-              <a href="https://github.com/koljapluemer/what-to-do-next" target="_blank">what-to-do-next</a>
-              
-            </h3>
-            
-            <small>A tiny desktop tool for collecting and displaying ideas on what I could do now</small>
-            
-          </div>
-        </div>
-        
-      </article>
-      
     </div>
+
+    
+    
+    <details class="failed-section">
+      <summary>Failed Projects &amp; Experiments</summary>
+      <div class="cards-grid">
+        
+        <article class="card">
+          <div class="card-main">
+            
+            <img class="card-thumbnail" src="thumbnails/beworded.webp" alt="">
+            
+
+            <div class="card-content">
+              <h3 class="card-title">
+                
+                <a href="https://kolja-sam.itch.io/beworded" target="_blank">Beworded</a>
+                
+              </h3>
+              
+              <small>Prototype of a Bejeweled-style vocabulary game</small>
+              
+              <small class="card-failed-reason">The core loop is just not very fun, and the game does not communicate it's affordances too clearly</small>
+            </div>
+          </div>
+          
+        </article>
+        
+        <article class="card">
+          <div class="card-main">
+            
+
+            <div class="card-content">
+              <h3 class="card-title">
+                
+                <a href="https://github.com/koljapluemer/know-every-year" target="_blank">know-every-year</a>
+                
+              </h3>
+              
+              <small>An adaptive app to learn world history events by year using the Major System</small>
+              
+              <small class="card-failed-reason">Couldn't find a coherent flow unifying adding years, adding events, adding mnemonics, and practicing all of that</small>
+            </div>
+          </div>
+          
+        </article>
+        
+        <article class="card">
+          <div class="card-main">
+            
+            <img class="card-thumbnail" src="thumbnails/ai-based-learning-materials.webp" alt="">
+            
+
+            <div class="card-content">
+              <h3 class="card-title">
+                
+                <a href="https://github.com/koljapluemer/ai-based-learning-materials" target="_blank">AI-based learning material generator</a>
+                
+              </h3>
+              
+              <small class="card-failed-reason">Having a CRM for exercise creation disconnected from specific learning apps turned out to lack a reasonable usage flow</small>
+            </div>
+          </div>
+          
+        </article>
+        
+      </div>
+    </details>
+    
 
         <p>If you want to know what I'm acutely working on, check the <a href="/milestones.html">milestones</a>.</p>
   </main>
@@ -746,6 +794,17 @@
   .card-title a,
   .card-title span {
     min-width: 0;
+  }
+
+  .failed-section summary {
+    cursor: pointer;
+    user-select: none;
+    margin-bottom: var(--space-3);
+  }
+
+  .card-failed-reason {
+    color: var(--text-2);
+    font-style: italic;
   }
 
   .card-links {
