@@ -1,12 +1,8 @@
 {
-  "type": "learnapp",
   "title": "Basic Egyptian Sentences Trainer",
   "description": "Get a feel for Egyptian Arabic with a cloze deletion game",
   "url": "https://arz.koljasam.com/",
-  "rows": 2,
-  "cols": 2,
   "links": {
-    "I built a time-pressure game to practice Egyptian Arabic sentences": "https://koljasam.substack.com/p/i-built-a-time-pressure-game-to-practice",
     "Practicing Target Language Vocabulary With a Time-Pressure Sentence Cloze Game": "https://github.com/koljapluemer/files/blob/main/26_01d_time_pressure_sentence_learning.pdf"
   }
 }
