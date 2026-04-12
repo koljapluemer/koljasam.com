@@ -35,7 +35,7 @@
     <div class="cards-grid">
       {% for card in cards if not card.failed %}
       <article
-        class="card{% if card.paused %} card-paused{% endif %}">
+        class="card{% if card.paused %} card-paused{% endif %}{% if card.links | length >= 2 %} card-tall{% endif %}">
         <div class="card-main">
           {% if card.thumbnail %}
           <img class="card-thumbnail" src="{{ card.thumbnail }}" alt="">
@@ -71,7 +71,7 @@
       <summary>Failed Projects &amp; Experiments</summary>
       <div class="cards-grid">
         {% for card in failed_cards %}
-        <article class="card{% if card.paused %} card-paused{% endif %}">
+        <article class="card{% if card.paused %} card-paused{% endif %}{% if card.links | length >= 2 %} card-tall{% endif %}">
           <div class="card-main">
             {% if card.thumbnail %}
             <img class="card-thumbnail" src="{{ card.thumbnail }}" alt="">
@@ -224,6 +224,10 @@
     cursor: pointer;
     user-select: none;
     margin-bottom: var(--space-3);
+  }
+
+  .card-tall {
+    grid-row: span 2;
   }
 
   .card-failed-reason {

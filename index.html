@@ -38,6 +38,27 @@
         class="card">
         <div class="card-main">
           
+          <img class="card-thumbnail" src="thumbnails/matrix-multiplication-mentor.webp" alt="">
+          
+
+          <div class="card-content">
+            <h3 class="card-title">
+              
+              <a href="https://matrix.koljasam.com/" target="_blank">Matrix Multiplication Mentor</a>
+              
+            </h3>
+            
+            <small> a tiny learning app to understand and practice matrix multiplication, built for Summer of Math 21</small>
+            
+          </div>
+        </div>
+        
+      </article>
+      
+      <article
+        class="card">
+        <div class="card-main">
+          
           <img class="card-thumbnail" src="thumbnails/what-to-do-next.webp" alt="">
           
 
@@ -272,7 +293,7 @@
       </article>
       
       <article
-        class="card">
+        class="card card-tall">
         <div class="card-main">
           
           <img class="card-thumbnail" src="thumbnails/zk.webp" alt="">
@@ -301,7 +322,7 @@
       </article>
       
       <article
-        class="card">
+        class="card card-tall">
         <div class="card-main">
           
 
@@ -409,7 +430,7 @@
       </article>
       
       <article
-        class="card">
+        class="card card-tall">
         <div class="card-main">
           
           <img class="card-thumbnail" src="thumbnails/basic-egyptian-sentences.webp" alt="">
@@ -465,7 +486,7 @@
       </article>
       
       <article
-        class="card">
+        class="card card-tall">
         <div class="card-main">
           
           <img class="card-thumbnail" src="thumbnails/blog-of-cards.webp" alt="">
@@ -531,7 +552,7 @@
       </article>
       
       <article
-        class="card">
+        class="card card-tall">
         <div class="card-main">
           
           <img class="card-thumbnail" src="thumbnails/karten.webp" alt="">
@@ -603,27 +624,6 @@
             </h3>
             
             <small>An Obsidian.md plugin randomly exposing you to your notes. Supports habits, to-dos, spaced repetition flashcards, iterative reading and more.</small>
-            
-          </div>
-        </div>
-        
-      </article>
-      
-      <article
-        class="card">
-        <div class="card-main">
-          
-          <img class="card-thumbnail" src="thumbnails/matrix-multiplication-mentor.webp" alt="">
-          
-
-          <div class="card-content">
-            <h3 class="card-title">
-              
-              <a href="https://matrix.koljasam.com/" target="_blank">Matrix Multiplication Mentor</a>
-              
-            </h3>
-            
-            <small> a tiny learning app to understand and practice matrix multiplication, built for Summer of Math 21</small>
             
           </div>
         </div>
@@ -821,6 +821,10 @@
     cursor: pointer;
     user-select: none;
     margin-bottom: var(--space-3);
+  }
+
+  .card-tall {
+    grid-row: span 2;
   }
 
   .card-failed-reason {
