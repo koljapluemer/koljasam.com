@@ -1,7 +1,10 @@
 {
     "started": "26-04-20",
+    "ended": "26-04-22",
+    "evaluation": "SUCCESS",
     "goal": "build a minimal, yet effective-in-teaching app to practice simplifying highschool level math expressions",
     "showTheWorld": "show interested teacher",
     "notes": [
+        "surprisingly nasty algo stuff (math term gen and eval), no way of making a general version based on this"
     ]
 }
