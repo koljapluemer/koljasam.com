@@ -35,6 +35,27 @@
     <div class="cards-grid">
       
       <article
+        class="card">
+        <div class="card-main">
+          
+          <img class="card-thumbnail" src="thumbnails/simplify-expressions.webp" alt="">
+          
+
+          <div class="card-content">
+            <h3 class="card-title">
+              
+              <a href="https://term.koljasam.com/" target="_blank">Expression Simplification Practice</a>
+              
+            </h3>
+            
+            <small>Free high-school level math foundations practice tool</small>
+            
+          </div>
+        </div>
+        
+      </article>
+      
+      <article
         class="card card-tall">
         <div class="card-main">
           
@@ -621,27 +642,6 @@
         
       </article>
       
-      <article
-        class="card">
-        <div class="card-main">
-          
-          <img class="card-thumbnail" src="thumbnails/simplify-expressions.webp" alt="">
-          
-
-          <div class="card-content">
-            <h3 class="card-title">
-              
-              <a href="https://term.koljasam.com/" target="_blank">Expression Simplification Practice</a>
-              
-            </h3>
-            
-            <small>Free high-school level math foundations practice tool</small>
-            
-          </div>
-        </div>
-        
-      </article>
-      
     </div>
 
     
@@ -820,6 +820,7 @@
     display: flex;
     flex-direction: column;
     gap: var(--space-2);
+    grid-row: span 2;
   }
 
   .card-main {
@@ -857,7 +858,7 @@
   }
 
   .card-tall {
-    grid-row: span 2;
+    grid-row: span 3;
   }
 
   .card-failed-reason {
@@ -892,8 +893,12 @@
 
     .card {
       grid-column: span 1;
-      grid-row: span 1;
+      grid-row: span 2;
       flex-direction: column;
+    }
+
+    .card-tall {
+      grid-row: span 3;
     }
 
 }
