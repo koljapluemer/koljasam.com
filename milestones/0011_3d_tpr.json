@@ -2,7 +2,10 @@
     "goal": "make a 3D TPR game, collect 2h playtime (ideally not dreadful)",
     "showTheWorld": "show the professor; post somewhere",
     "started": "26-05-17",
+    "ended": "26-05-25",
+    "evaluation": "SUCCESS",
     "comments": [
-        "this isn't a really actionable goal; but this should become my infinite get-familiar-with-Viet mechanic"
+        "this isn't a really actionable goal; but this should become my infinite get-familiar-with-Viet mechanic",
+        "these usage reqs make it much harder, but they also drive serious use and thus related dev"
     ]
 }
