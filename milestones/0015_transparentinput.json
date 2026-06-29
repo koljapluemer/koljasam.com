@@ -1,7 +1,10 @@
 {
     "goal": "deploy usable transparentinput Firefox+Chrome plugin",
-    "showTheWorld": "presentation, some post, X, talk to people",
+    "showTheWorld": "~~presentation, some post, X, talk to people~~",
+    "evaluation": "SUCCESS",
     "started": "26-06-20",
+    "ended": "26-06-29",
     "notes": [
+        "let's get showTheWorld out of here. Portfolio deploy should always be included. Marketing needs to be separated, these one-shots are useless."
     ]
 }
