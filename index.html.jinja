@@ -34,8 +34,7 @@
 
     <div class="cards-grid">
       {% for card in cards if not card.failed %}
-      <article
-        class="card{% if card.paused %} card-paused{% endif %}{% if card.links | length >= 2 %} card-tall{% endif %}">
+      <article class="card">
         <div class="card-main">
           {% if card.thumbnail %}
           <img class="card-thumbnail" src="{{ card.thumbnail }}" alt="">
@@ -54,13 +53,6 @@
             {% endif %}
           </div>
         </div>
-        {% if card.links %}
-        <div class="card-links">
-          {% for link in card.links %}
-          <a href="{{ link.url }}" target="_blank">{{ link.label }}</a>
-          {% endfor %}
-        </div>
-        {% endif %}
       </article>
       {% endfor %}
     </div>
@@ -71,7 +63,7 @@
       <summary>Failed Projects &amp; Experiments</summary>
       <div class="cards-grid">
         {% for card in failed_cards %}
-        <article class="card{% if card.paused %} card-paused{% endif %}{% if card.links | length >= 2 %} card-tall{% endif %}">
+        <article class="card">
           <div class="card-main">
             {% if card.thumbnail %}
             <img class="card-thumbnail" src="{{ card.thumbnail }}" alt="">
@@ -91,20 +83,12 @@
               <small class="card-failed-reason">{{ card.failed }}</small>
             </div>
           </div>
-          {% if card.links %}
-          <div class="card-links">
-            {% for link in card.links %}
-            <a href="{{ link.url }}" target="_blank">{{ link.label }}</a>
-            {% endfor %}
-          </div>
-          {% endif %}
         </article>
         {% endfor %}
       </div>
     </details>
     {% endif %}
 
-        <p>If you want to know what I'm acutely working on, check the <a href="/milestones.html">milestones</a>.</p>
   </main>
 </body>
 
@@ -208,7 +192,7 @@
     object-position: center;
   }
 
-.card-content {
+  .card-content {
     display: flex;
     flex-direction: column;
     gap: var(--space-2);
@@ -236,19 +220,7 @@
     font-style: italic;
   }
 
-  .card-links {
-    margin-top: var(--space-2);
-    padding-top: var(--space-2);
-    border-top: 1px solid var(--border-2);
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-2);
-  }
 
-  .card-links a {
-    display: inline-block;
-    font-size: var(--fs-link);
-  }
 
   @media (max-width: 56.25rem) {
     .cards-grid {
@@ -271,7 +243,7 @@
       grid-row: span 3;
     }
 
-}
+  }
 </style>
 
 </html>
