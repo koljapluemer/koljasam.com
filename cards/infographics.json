@@ -1,7 +1,5 @@
 {
     "description": "Occasionally, I create posters and infographics about varying topics",
-    "rows": 1,
-    "cols": 1,
     "title": "Infographics & Posters",
     "links": {
         "Making Scenes in Godot": "https://github.com/koljapluemer/files/blob/main/infographic_001_godot_scenes.pdf",

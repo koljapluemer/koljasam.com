@@ -1,8 +1,0 @@
-{
-  "type": "tool",
-  "title": "indelible",
-  "description": "An infinite canvas for ideating and note-taking app without undo.",
-  "rows": 1,
-  "cols": 1,
-  "publish": false
-}

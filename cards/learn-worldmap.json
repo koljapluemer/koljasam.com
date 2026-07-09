@@ -1,8 +1,0 @@
-{
-  "type": "game",
-  "title": "Learn the World Map",
-  "description": "an SR-based web game to finally memorize countries on the world map",
-  "rows": 2,
-  "cols": 2,
-  "publish": false
-}

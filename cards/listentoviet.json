@@ -1,5 +1,6 @@
 {
     "url": "https://viet.koljasam.com/",
     "title": "Vietnamese Minimal Pairs",
-    "description": "Experimental UI for learning to distinguish Vietnamese sounds and tones"
+    "description": "Experimental UI for learning to distinguish Vietnamese sounds and tones",
+    "failed": "integrated into linguanodon"
 }

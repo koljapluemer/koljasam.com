@@ -1,8 +1,0 @@
-{
-  "type": "learnapp",
-  "title": "Mental Addition UI",
-  "description": "Test application for cognitive load manipulation for experiments w/ the Muse 2 EEG",
-  "rows": 2,
-  "cols": 2,
-  "publish": false
-}

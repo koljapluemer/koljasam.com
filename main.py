@@ -56,6 +56,8 @@ def load_cards(base_dir: Path) -> list[dict]:
 
         thumbnail_path = thumbnails_dir / f"{card_path.stem}.webp"
 
+        raw_failed = data.get("failed")
+
         cards.append(
             {
                 "title": title,
@@ -68,12 +70,13 @@ def load_cards(base_dir: Path) -> list[dict]:
                 "paused": data.get("paused") is True,
                 "links": normalize_links(data.get("links")),
                 "thumbnail": f"thumbnails/{thumbnail_path.name}" if thumbnail_path.exists() else None,
-                "failed": normalize_text(data.get("failed")),
+                "is_failed": bool(raw_failed),
+                "failed": normalize_text(raw_failed) if isinstance(raw_failed, str) else None,
                 "git_touched_at": git_last_touched_timestamp(base_dir, card_path),
             }
         )
 
-    cards.sort(key=lambda c: c["git_touched_at"], reverse=True)
+    cards.sort(key=lambda c: (c["is_failed"], -c["git_touched_at"]))
     return cards
 
 

@@ -1,9 +1,6 @@
 {
-  "type": "learnapp",
   "title": "karten",
   "description": "Free online Spaced Repetition Software with experimental features such as interdependent flashcards",
-  "rows": 2,
-  "cols": 2,
   "url": "https://karten.koljasam.com/",
   "links": {
     "Memorizing Verbatim Quotes With Interdependent Flashcards": "https://github.com/koljapluemer/files/blob/main/a4_26_01b.pdf",

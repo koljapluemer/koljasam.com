@@ -2,7 +2,5 @@
   "title": "Basic Egyptian Sentences Trainer",
   "description": "Get a feel for Egyptian Arabic with a cloze deletion game",
   "url": "https://arz.koljasam.com/",
-  "links": {
-    "Practicing Target Language Vocabulary With a Time-Pressure Sentence Cloze Game": "https://github.com/koljapluemer/files/blob/main/26_01d_time_pressure_sentence_learning.pdf"
-  }
+  "failed": "integrated into linguanodon"
 }

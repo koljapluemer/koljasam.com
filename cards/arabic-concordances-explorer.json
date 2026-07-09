@@ -2,9 +2,6 @@
   "type": "learnapp",
   "title": "Arabic Concordances Explorer",
   "description": "Practice Arabic (MSA) by exploring sentences & concordances",
-  "rows": 1,
-  "cols": 1,
   "url": "https://concordances.koljasam.com/",
-  "links": {
-  }
+  "failed": "core interaction loop just not very fun."
 }

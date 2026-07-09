@@ -31,9 +31,47 @@
 
     <p>Here are some of my projects:</p>
 
+    <article class="card big-card">
+      <div class="card-main">
+        <img class="card-thumbnail" src="/assets/linguanodon.webp" alt="">
+
+        <div class="card-content">
+          <h3 class="card-title">
+            <a href="https://github.com/koljapluemer/linguanodon" target="_blank">Linguanodon</a>
+          </h3>
+          <p>
+            A collection of interactive interfaces for language acquisition. Currently 10 apps for 20+ different
+            languages.
+          </p>
+          <a href="https://linguanodon.com" target="_blank">Check it out here</a>
+        </div>
+      </div>
+    </article>
+
+
+
+    <article class="card big-card">
+      <div class="card-main">
+        <img class="card-thumbnail" src="/assets/samlearns.webp" alt="">
+
+        <div class="card-content">
+          <h3 class="card-title">
+            <a href="https://github.com/koljapluemer/sam-learns" target="_blank">samlearns.org</a>
+          </h3>
+          <p>
+            Experimental mini apps for digital learning across various topics.
+          </p>
+          <a href="https://samlearns.netlify.app/" target="_blank">Visit</a>
+        </div>
+      </div>
+    </article>
+
+
+    {% set visible_cards = cards[:8] %}
+    {% set more_cards = cards[8:] %}
 
     <div class="cards-grid">
-      {% for card in cards if not card.failed %}
+      {% for card in visible_cards %}
       <article class="card">
         <div class="card-main">
           {% if card.thumbnail %}
@@ -51,18 +89,20 @@
             {% if card.description %}
             <small>{{ card.description }}</small>
             {% endif %}
+            {% if card.failed %}
+            <small class="card-failed-reason">{{ card.failed }}</small>
+            {% endif %}
           </div>
         </div>
       </article>
       {% endfor %}
     </div>
 
-    {% set failed_cards = cards | selectattr("failed") | list %}
-    {% if failed_cards %}
-    <details class="failed-section">
-      <summary>Failed Projects &amp; Experiments</summary>
+    {% if more_cards %}
+    <details class="more-section">
+      <summary>Show more</summary>
       <div class="cards-grid">
-        {% for card in failed_cards %}
+        {% for card in more_cards %}
         <article class="card">
           <div class="card-main">
             {% if card.thumbnail %}
@@ -80,7 +120,9 @@
               {% if card.description %}
               <small>{{ card.description }}</small>
               {% endif %}
+              {% if card.failed %}
               <small class="card-failed-reason">{{ card.failed }}</small>
+              {% endif %}
             </div>
           </div>
         </article>
@@ -177,12 +219,15 @@
     grid-row: span 2;
   }
 
+
+
   .card-main {
     display: flex;
     flex-direction: column;
     gap: var(--space-2);
     flex: 1;
   }
+
 
   .card-thumbnail {
     width: 100%;
@@ -205,15 +250,21 @@
     min-width: 0;
   }
 
-  .failed-section summary {
+
+  .big-card .card-main {
+    flex-direction: row;
+  }
+
+  .big-card .card-thumbnail {
+    min-width: 65%;
+  }
+
+  .more-section summary {
     cursor: pointer;
     user-select: none;
     margin-bottom: var(--space-3);
   }
 
-  .card-tall {
-    grid-row: span 3;
-  }
 
   .card-failed-reason {
     color: var(--text-2);

@@ -1,6 +1,0 @@
-{
-    "title": "Cloze Drill",
-    "url": "https://clozedrill.koljasam.com/",
-    "description": "Experimental language learning app to internalize grammar and vocabulary by doing sentence-based cloze deletion exercises",
-    "failed": "building a general, multi-language interface for cloze exercises wasn't too useful, but exploded dev, data and onboarding complexity"
-}

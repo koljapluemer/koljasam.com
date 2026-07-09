@@ -2,9 +2,5 @@
   "type": "learnapp",
   "title": "Al Kutshina",
   "description": "Practice a language with image-based puzzles",
-  "rows": 1,
-  "cols": 1,
-  "url": "https://alkutshina.koljasam.com/",
-  "links": {
-  }
+  "url": "https://alkutshina.koljasam.com/"
 }

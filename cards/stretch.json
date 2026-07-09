@@ -1,7 +1,5 @@
 {
   "title": "Random Stretch Recommender",
   "description": "Get a random stretch you can do right now",
-  "rows": 1,
-  "cols": 2,
   "url": "https://stretch.koljasam.com/"
 }

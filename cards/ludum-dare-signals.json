@@ -1,9 +1,5 @@
 {
     "title": "Signal Lost",
     "description": "My entry for the Ludum Dare Game Jam #59 (Signals): Connect houses so they can deliver their data packages before growing annoyed.",
-    "url": "https://kolja-sam.itch.io/signal-lost",
-    "links": {
-        "Ludum Dare Submission": "https://ldjam.com/events/ludum-dare/59/signal-lost",
-        "GitHub Repo": "https://github.com/koljapluemer/ludum-dare-signals"
-    }
+    "url": "https://kolja-sam.itch.io/signal-lost"
 }

@@ -1,9 +1,0 @@
-{
-  "type": "blog",
-  "title": "cards",
-  "description": "A little blogging engine showcasing posts and notes in the form of independent cards",
-  "rows": 3,
-  "cols": 1,
-  "url": "https://cards.koljasam.com/",
-  "failed": "simply used too little"
-}

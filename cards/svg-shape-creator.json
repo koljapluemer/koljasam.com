@@ -2,9 +2,5 @@
   "type": "tool",
   "title": "SVG Shape Creator",
   "description": "a slim, web-based, laser-focused SVG editor that I need for game art creation",
-  "rows": 1,
-  "cols": 1,
-  "publish": true,
   "url": "https://svg.koljasam.com/"
-
 }

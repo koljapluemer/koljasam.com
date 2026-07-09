@@ -2,10 +2,6 @@
   "type": "learnapp",
   "title": "Infinite Sentences",
   "description": "Data-driven sentence learning app where you learn exactly the vocabulary you need to understand a piece of natural language",
-  "rows": 2,
-  "cols": 2,
-  "url": "https://infi.koljasam.com/",
-  "links": {
-    "Overview: A Sentence-Based Language Learning Application": "https://github.com/koljapluemer/files/blob/main/a4_26_01a.pdf"
-  }
+  "failed": "integrated into linguanodon",
+  "url": "https://infi.koljasam.com/"
 }
