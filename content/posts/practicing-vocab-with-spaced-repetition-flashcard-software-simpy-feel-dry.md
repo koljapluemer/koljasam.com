@@ -1,7 +1,7 @@
 +++
 title = 'practicing vocab with spaced repetition flashcard software simply feels dry'
 date = '2026-07-28'
-draft = true
+draft = false
 +++
 - I recently watched [this video](https://www.youtube.com/watch?v=BGR6474TdHk) which attempted to make Anki fun by simply introducing fresh CSS and background images
 - I attempted this approach on my own learning platform [samlearns.org](https://www.samlearns.org)
