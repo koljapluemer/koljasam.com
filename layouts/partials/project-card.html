@@ -1,0 +1,17 @@
+{{- $p := . -}}
+<article class="card">
+  <div class="card-main">
+    {{ with $p.Params.thumbnail }}{{ partial "thumbnail.html" (dict "thumbnail" .) }}{{ end }}
+    <div class="card-content">
+      <h3 class="card-title">
+        {{ if $p.Params.link }}
+        <a href="{{ $p.Params.link }}" target="_blank" rel="noopener">{{ $p.Title }}</a>
+        {{ else }}
+        <span>{{ $p.Title }}</span>
+        {{ end }}
+      </h3>
+      {{ with $p.Params.description }}<small>{{ . }}</small>{{ end }}
+      {{ with $p.Params.failed }}<small class="card-failed-reason">{{ . }}</small>{{ end }}
+    </div>
+  </div>
+</article>

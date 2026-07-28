@@ -1,0 +1,63 @@
+{{ define "main" }}
+<h1>Kolja Sam Pluemer</h1>
+
+<p>My mission is to make the world a better place by building excellent tools for learning. <br /> Get in touch at
+  <em>contact (at) koljasam.com</em>.
+</p>
+
+<p>
+  If you want to support my work, you can
+  <a href="https://ko-fi.com/S6S81CWUVD" target="_blank" rel="noopener" class="kofi-btn">
+    buy me a coffee
+  </a>.
+</p>
+
+<h2>Projects</h2>
+
+{{ $projects := where site.RegularPages "Section" "projects" }}
+
+{{ $active := slice }}
+{{ $failed := slice }}
+{{ range $projects }}
+  {{ if .Params.failed }}
+    {{ $failed = $failed | append . }}
+  {{ else }}
+    {{ $active = $active | append . }}
+  {{ end }}
+{{ end }}
+{{ $active = sort $active "Date" "desc" }}
+{{ $failed = sort $failed "Date" "desc" }}
+{{ $ordered := $active }}
+{{ range $failed }}{{ $ordered = $ordered | append . }}{{ end }}
+
+{{ $visible := first 8 $ordered }}
+{{ $more := after 8 $ordered }}
+
+<div class="cards-grid">
+  {{ range $visible }}{{ partial "project-card.html" . }}{{ end }}
+</div>
+
+{{ if $more }}
+<details class="more-section">
+  <summary>Show more</summary>
+  <div class="cards-grid">
+    {{ range $more }}{{ partial "project-card.html" . }}{{ end }}
+  </div>
+</details>
+{{ end }}
+
+{{ $posts := where site.RegularPages "Section" "posts" }}
+{{ $posts = sort $posts "Date" "desc" }}
+{{ with $posts }}
+<h2>Writing</h2>
+<ul class="post-list">
+  {{ range first 10 . }}
+  <li>
+    <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+    <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time>
+  </li>
+  {{ end }}
+</ul>
+<p><a href="{{ "/posts/" | relURL }}">See all posts</a></p>
+{{ end }}
+{{ end }}

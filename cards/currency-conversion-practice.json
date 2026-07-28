@@ -1,8 +1,0 @@
-{
-  "type": "learnapp",
-  "title": "Currency Conversion Challenger",
-  "description": "Small Vue app to practice mentally converting from one currency to another",
-  "failed": "integrated into samlearns",
-  "url": "https://currency.koljasam.com/"
-
-}

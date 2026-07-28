@@ -1,0 +1,66 @@
+media:
+  - name: post-images
+    label: Post images
+    input: static/images
+    output: /images
+  - name: project-thumbnails
+    label: Project thumbnails
+    input: assets/images/projects
+    output: /images/projects
+
+content:
+  - name: projects
+    label: Projects
+    type: collection
+    path: content/projects
+    format: toml-frontmatter
+    filename: "{primary}.md"
+    fields:
+      - name: title
+        type: string
+      - name: description
+        type: text
+      - name: link
+        label: Link
+        type: string
+      - name: failed
+        label: Failed / discontinued reason
+        type: text
+        description: "Leave empty if still active. If set, the card sinks below active projects and this text is shown as the reason."
+      - name: thumbnail
+        type: image
+        options:
+          media: project-thumbnails
+      - name: date
+        type: date
+      - name: draft
+        type: boolean
+        default: false
+    view:
+      primary: title
+      fields: [description]
+      sort: date
+      order: desc
+
+  - name: posts
+    label: Posts
+    type: collection
+    path: content/posts
+    format: toml-frontmatter
+    filename: "{primary}.md"
+    fields:
+      - name: title
+        type: string
+      - name: date
+        type: date
+      - name: draft
+        type: boolean
+        default: false
+      - name: body
+        type: rich-text
+        options:
+          media: post-images
+    view:
+      primary: title
+      sort: date
+      order: desc

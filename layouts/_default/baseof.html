@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} · {{ .Site.Title }}{{ end }}</title>
+  <script>
+    window.goatcounter = {
+      path: function (p) { return location.host + p }
+    }
+  </script>
+  <script data-goatcounter="https://koljasam.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+  <link rel="icon" href="{{ "favicon.ico" | absURL }}" type="image/x-icon">
+  <link rel="stylesheet" href="{{ "css/style.css" | absURL }}">
+</head>
+
+<body>
+  <main>
+    {{ block "main" . }}{{ end }}
+  </main>
+</body>
+
+</html>

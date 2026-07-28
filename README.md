@@ -1,13 +1,22 @@
 # koljasam.com
 
-Personal website.
+Personal website, built with [Hugo](https://gohugo.io). Content is editable via [Pages CMS](https://pagescms.org) (see `.pages.yml`).
+
+## Structure
+
+- `content/projects/` — project cards shown on the homepage. Front matter: `title`, `description`, `url`, `failed` (optional; if set, the card is marked discontinued and sinks below active ones), `thumbnail`, `date`.
+- `content/posts/` — blog posts, listed on the homepage (latest 10) and in full at `/posts/`.
+- `assets/images/projects/` — source thumbnails for project cards; resized and re-encoded to WebP at build time (see `layouts/partials/thumbnail.html`).
+- `static/images/` — images referenced inline from blog posts (served as-is).
 
 ## Build
 
-Regenerate `index.html` from the A4 experiments:
-
 ```bash
-uv run python main.py
+hugo
 ```
 
-This scans the `A4/` folder for subfolders with PDFs, generates thumbnails, and renders `index.html` from the Jinja template.
+Or for local development with live reload:
+
+```bash
+hugo server
+```

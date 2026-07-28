@@ -1,0 +1,4 @@
+baseURL = 'https://koljasam.com/'
+languageCode = 'en-us'
+title = "Kolja Sam Pluemer"
+disableKinds = ['taxonomy', 'term']
